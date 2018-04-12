@@ -1,0 +1,275 @@
+   1               		.file	"WMath.cpp"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	_Z3maplllll
+  20               	_Z3maplllll:
+  21               	.LFB5:
+  22               	.LM1:
+  23               	.LVL0:
+  24 0000 2F92      		push r2
+  25 0002 3F92      		push r3
+  26 0004 4F92      		push r4
+  27 0006 5F92      		push r5
+  28 0008 6F92      		push r6
+  29 000a 7F92      		push r7
+  30 000c 8F92      		push r8
+  31 000e 9F92      		push r9
+  32 0010 AF92      		push r10
+  33               	.LVL1:
+  34 0012 BF92      		push r11
+  35 0014 CF92      		push r12
+  36 0016 DF92      		push r13
+  37 0018 EF92      		push r14
+  38               	.LVL2:
+  39 001a FF92      		push r15
+  40 001c 0F93      		push r16
+  41 001e 1F93      		push r17
+  42 0020 DF93      		push r29
+  43 0022 CF93      		push r28
+  44 0024 CDB7      		in r28,__SP_L__
+  45 0026 DEB7      		in r29,__SP_H__
+  46               	/* prologue: function */
+  47               	/* frame size = 0 */
+  48 0028 3B01      		movw r6,r22
+  49 002a 4C01      		movw r8,r24
+  50 002c 1901      		movw r2,r18
+  51 002e 2A01      		movw r4,r20
+  52 0030 6D89      		ldd r22,Y+21
+  53 0032 7E89      		ldd r23,Y+22
+  54 0034 8F89      		ldd r24,Y+23
+  55 0036 988D      		ldd r25,Y+24
+  56               	.LVL3:
+  57               	.LM2:
+  58 0038 6A19      		sub r22,r10
+  59 003a 7B09      		sbc r23,r11
+  60 003c 8C09      		sbc r24,r12
+  61 003e 9D09      		sbc r25,r13
+  62               	.LVL4:
+  63 0040 621A      		sub r6,r18
+  64 0042 730A      		sbc r7,r19
+  65 0044 840A      		sbc r8,r20
+  66 0046 950A      		sbc r9,r21
+  67 0048 A401      		movw r20,r8
+  68 004a 9301      		movw r18,r6
+  69               	.LVL5:
+  70 004c 0E94 0000 		call __mulsi3
+  71               	.LVL6:
+  72 0050 E218      		sub r14,r2
+  73 0052 F308      		sbc r15,r3
+  74 0054 0409      		sbc r16,r4
+  75 0056 1509      		sbc r17,r5
+  76               	.LVL7:
+  77 0058 A801      		movw r20,r16
+  78 005a 9701      		movw r18,r14
+  79 005c 0E94 0000 		call __divmodsi4
+  80 0060 2A0D      		add r18,r10
+  81 0062 3B1D      		adc r19,r11
+  82 0064 4C1D      		adc r20,r12
+  83 0066 5D1D      		adc r21,r13
+  84               	.LM3:
+  85 0068 B901      		movw r22,r18
+  86 006a CA01      		movw r24,r20
+  87               	/* epilogue start */
+  88 006c CF91      		pop r28
+  89 006e DF91      		pop r29
+  90 0070 1F91      		pop r17
+  91 0072 0F91      		pop r16
+  92 0074 FF90      		pop r15
+  93 0076 EF90      		pop r14
+  94               	.LVL8:
+  95 0078 DF90      		pop r13
+  96 007a CF90      		pop r12
+  97 007c BF90      		pop r11
+  98 007e AF90      		pop r10
+  99               	.LVL9:
+ 100 0080 9F90      		pop r9
+ 101 0082 8F90      		pop r8
+ 102 0084 7F90      		pop r7
+ 103 0086 6F90      		pop r6
+ 104               	.LVL10:
+ 105 0088 5F90      		pop r5
+ 106 008a 4F90      		pop r4
+ 107 008c 3F90      		pop r3
+ 108 008e 2F90      		pop r2
+ 109               	.LVL11:
+ 110 0090 0895      		ret
+ 111               	.LFE5:
+ 113               	.global	_Z8makeWordj
+ 115               	_Z8makeWordj:
+ 116               	.LFB6:
+ 117               	.LM4:
+ 118               	.LVL12:
+ 119               	/* prologue: function */
+ 120               	/* frame size = 0 */
+ 121               	.LVL13:
+ 122               	/* epilogue start */
+ 123               	.LM5:
+ 124 0092 0895      		ret
+ 125               	.LFE6:
+ 127               	.global	_Z8makeWordhh
+ 129               	_Z8makeWordhh:
+ 130               	.LFB7:
+ 131               	.LM6:
+ 132               	.LVL14:
+ 133               	/* prologue: function */
+ 134               	/* frame size = 0 */
+ 135               	.LM7:
+ 136 0094 70E0      		ldi r23,lo8(0)
+ 137 0096 382F      		mov r19,r24
+ 138               	.LVL15:
+ 139 0098 20E0      		ldi r18,lo8(0)
+ 140               	.LVL16:
+ 141 009a 622B      		or r22,r18
+ 142 009c 732B      		or r23,r19
+ 143               	.LVL17:
+ 144 009e CB01      		movw r24,r22
+ 145               	/* epilogue start */
+ 146 00a0 0895      		ret
+ 147               	.LFE7:
+ 149               	.global	_Z6randoml
+ 151               	_Z6randoml:
+ 152               	.LFB3:
+ 153               	.LM8:
+ 154               	.LVL18:
+ 155 00a2 EF92      		push r14
+ 156 00a4 FF92      		push r15
+ 157 00a6 0F93      		push r16
+ 158 00a8 1F93      		push r17
+ 159               	/* prologue: function */
+ 160               	/* frame size = 0 */
+ 161 00aa 7B01      		movw r14,r22
+ 162 00ac 8C01      		movw r16,r24
+ 163               	.LM9:
+ 164 00ae 6115      		cp r22,__zero_reg__
+ 165 00b0 7105      		cpc r23,__zero_reg__
+ 166 00b2 8105      		cpc r24,__zero_reg__
+ 167 00b4 9105      		cpc r25,__zero_reg__
+ 168 00b6 01F4      		brne .L8
+ 169 00b8 20E0      		ldi r18,lo8(0)
+ 170 00ba 30E0      		ldi r19,hi8(0)
+ 171 00bc 40E0      		ldi r20,hlo8(0)
+ 172 00be 50E0      		ldi r21,hhi8(0)
+ 173 00c0 00C0      		rjmp .L9
+ 174               	.L8:
+ 175               	.LM10:
+ 176 00c2 0E94 0000 		call random
+ 177               	.LVL19:
+ 178 00c6 A801      		movw r20,r16
+ 179 00c8 9701      		movw r18,r14
+ 180 00ca 0E94 0000 		call __divmodsi4
+ 181 00ce AC01      		movw r20,r24
+ 182 00d0 CB01      		movw r24,r22
+ 183 00d2 DA01      		movw r26,r20
+ 184 00d4 9C01      		movw r18,r24
+ 185 00d6 AD01      		movw r20,r26
+ 186               	.LVL20:
+ 187               	.L9:
+ 188               	.LM11:
+ 189 00d8 B901      		movw r22,r18
+ 190 00da CA01      		movw r24,r20
+ 191               	/* epilogue start */
+ 192 00dc 1F91      		pop r17
+ 193 00de 0F91      		pop r16
+ 194 00e0 FF90      		pop r15
+ 195 00e2 EF90      		pop r14
+ 196               	.LVL21:
+ 197 00e4 0895      		ret
+ 198               	.LFE3:
+ 200               	.global	_Z6randomll
+ 202               	_Z6randomll:
+ 203               	.LFB4:
+ 204               	.LM12:
+ 205               	.LVL22:
+ 206 00e6 EF92      		push r14
+ 207 00e8 FF92      		push r15
+ 208 00ea 0F93      		push r16
+ 209 00ec 1F93      		push r17
+ 210               	/* prologue: function */
+ 211               	/* frame size = 0 */
+ 212 00ee 7B01      		movw r14,r22
+ 213 00f0 8C01      		movw r16,r24
+ 214               	.LBB2:
+ 215               	.LM13:
+ 216 00f2 6217      		cp r22,r18
+ 217 00f4 7307      		cpc r23,r19
+ 218 00f6 8407      		cpc r24,r20
+ 219 00f8 9507      		cpc r25,r21
+ 220 00fa 04F4      		brge .L12
+ 221               	.LM14:
+ 222 00fc 261B      		sub r18,r22
+ 223 00fe 370B      		sbc r19,r23
+ 224 0100 480B      		sbc r20,r24
+ 225 0102 590B      		sbc r21,r25
+ 226               	.LVL23:
+ 227 0104 CA01      		movw r24,r20
+ 228 0106 B901      		movw r22,r18
+ 229               	.LVL24:
+ 230 0108 0E94 0000 		call _Z6randoml
+ 231               	.LVL25:
+ 232 010c E60E      		add r14,r22
+ 233 010e F71E      		adc r15,r23
+ 234 0110 081F      		adc r16,r24
+ 235 0112 191F      		adc r17,r25
+ 236               	.LVL26:
+ 237               	.L12:
+ 238               	.LBE2:
+ 239               	.LM15:
+ 240 0114 B701      		movw r22,r14
+ 241               	.LVL27:
+ 242 0116 C801      		movw r24,r16
+ 243               	/* epilogue start */
+ 244 0118 1F91      		pop r17
+ 245 011a 0F91      		pop r16
+ 246 011c FF90      		pop r15
+ 247 011e EF90      		pop r14
+ 248 0120 0895      		ret
+ 249               	.LFE4:
+ 251               	.global	_Z10randomSeedm
+ 253               	_Z10randomSeedm:
+ 254               	.LFB2:
+ 255               	.LM16:
+ 256               	.LVL28:
+ 257               	/* prologue: function */
+ 258               	/* frame size = 0 */
+ 259               	.LM17:
+ 260 0122 6115      		cp r22,__zero_reg__
+ 261 0124 7105      		cpc r23,__zero_reg__
+ 262 0126 8105      		cpc r24,__zero_reg__
+ 263 0128 9105      		cpc r25,__zero_reg__
+ 264 012a 01F0      		breq .L16
+ 265               	.LM18:
+ 266 012c 0E94 0000 		call srandom
+ 267               	.LVL29:
+ 268               	.L16:
+ 269 0130 0895      		ret
+ 270               	.LFE2:
+ 336               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 WMath.cpp
+C:\Users\OPENMA~1\AppData\Local\Temp/ccIiLvyz.s:2      *ABS*:0000003f __SREG__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccIiLvyz.s:3      *ABS*:0000003e __SP_H__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccIiLvyz.s:4      *ABS*:0000003d __SP_L__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccIiLvyz.s:5      *ABS*:00000034 __CCP__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccIiLvyz.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccIiLvyz.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccIiLvyz.s:20     .text:00000000 _Z3maplllll
+C:\Users\OPENMA~1\AppData\Local\Temp/ccIiLvyz.s:115    .text:00000092 _Z8makeWordj
+C:\Users\OPENMA~1\AppData\Local\Temp/ccIiLvyz.s:129    .text:00000094 _Z8makeWordhh
+C:\Users\OPENMA~1\AppData\Local\Temp/ccIiLvyz.s:151    .text:000000a2 _Z6randoml
+C:\Users\OPENMA~1\AppData\Local\Temp/ccIiLvyz.s:202    .text:000000e6 _Z6randomll
+C:\Users\OPENMA~1\AppData\Local\Temp/ccIiLvyz.s:253    .text:00000122 _Z10randomSeedm
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__mulsi3
+__divmodsi4
+random
+srandom

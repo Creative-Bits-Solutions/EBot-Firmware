@@ -1,0 +1,85 @@
+   1               		.file	"new.cpp"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	_ZdaPv
+  20               	_ZdaPv:
+  21               	.LFB5:
+  22               	.LM1:
+  23               	.LVL0:
+  24               	/* prologue: function */
+  25               	/* frame size = 0 */
+  26               	.LM2:
+  27 0000 0E94 0000 		call free
+  28               	.LVL1:
+  29               	/* epilogue start */
+  30               	.LM3:
+  31 0004 0895      		ret
+  32               	.LFE5:
+  34               	.global	_ZdlPv
+  36               	_ZdlPv:
+  37               	.LFB4:
+  38               	.LM4:
+  39               	.LVL2:
+  40               	/* prologue: function */
+  41               	/* frame size = 0 */
+  42               	.LM5:
+  43 0006 0E94 0000 		call free
+  44               	.LVL3:
+  45               	/* epilogue start */
+  46               	.LM6:
+  47 000a 0895      		ret
+  48               	.LFE4:
+  50               	.global	_Znaj
+  52               	_Znaj:
+  53               	.LFB3:
+  54               	.LM7:
+  55               	.LVL4:
+  56               	/* prologue: function */
+  57               	/* frame size = 0 */
+  58               	.LM8:
+  59 000c 0E94 0000 		call malloc
+  60               	.LVL5:
+  61               	/* epilogue start */
+  62               	.LM9:
+  63 0010 0895      		ret
+  64               	.LFE3:
+  66               	.global	_Znwj
+  68               	_Znwj:
+  69               	.LFB2:
+  70               	.LM10:
+  71               	.LVL6:
+  72               	/* prologue: function */
+  73               	/* frame size = 0 */
+  74               	.LM11:
+  75 0012 0E94 0000 		call malloc
+  76               	.LVL7:
+  77               	/* epilogue start */
+  78               	.LM12:
+  79 0016 0895      		ret
+  80               	.LFE2:
+ 130               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 new.cpp
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVRDHzQ.s:2      *ABS*:0000003f __SREG__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVRDHzQ.s:3      *ABS*:0000003e __SP_H__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVRDHzQ.s:4      *ABS*:0000003d __SP_L__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVRDHzQ.s:5      *ABS*:00000034 __CCP__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVRDHzQ.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVRDHzQ.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVRDHzQ.s:20     .text:00000000 _ZdaPv
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVRDHzQ.s:36     .text:00000006 _ZdlPv
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVRDHzQ.s:52     .text:0000000c _Znaj
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVRDHzQ.s:68     .text:00000012 _Znwj
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+free
+malloc

@@ -1,0 +1,90 @@
+   1               		.file	"main.cpp"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               		.weak	atexit
+  20               	atexit:
+  21               	.LFB115:
+  22               	.LM1:
+  23               	/* prologue: function */
+  24               	/* frame size = 0 */
+  25               	.LM2:
+  26 0000 80E0      		ldi r24,lo8(0)
+  27 0002 90E0      		ldi r25,hi8(0)
+  28               	/* epilogue start */
+  29 0004 0895      		ret
+  30               	.LFE115:
+  32               		.weak	initVariant
+  34               	initVariant:
+  35               	.LFB116:
+  36               	.LM3:
+  37               	/* prologue: function */
+  38               	/* frame size = 0 */
+  39               	/* epilogue start */
+  40               	.LM4:
+  41 0006 0895      		ret
+  42               	.LFE116:
+  44               		.weak	_Z8setupUSBv
+  46               	_Z8setupUSBv:
+  47               	.LFB117:
+  48               	.LM5:
+  49               	/* prologue: function */
+  50               	/* frame size = 0 */
+  51               	/* epilogue start */
+  52               	.LM6:
+  53 0008 0895      		ret
+  54               	.LFE117:
+  56               	.global	main
+  58               	main:
+  59               	.LFB118:
+  60               	.LM7:
+  61 000a CF93      		push r28
+  62 000c DF93      		push r29
+  63               	/* prologue: function */
+  64               	/* frame size = 0 */
+  65               	.LM8:
+  66 000e 0E94 0000 		call init
+  67               	.LM9:
+  68 0012 0E94 0000 		call initVariant
+  69               	.LM10:
+  70 0016 0E94 0000 		call setup
+  71               	.LM11:
+  72 001a C0E0      		ldi r28,lo8(gs(_Z14serialEventRunv))
+  73 001c D0E0      		ldi r29,hi8(gs(_Z14serialEventRunv))
+  74               	.L12:
+  75               	.LM12:
+  76 001e 0E94 0000 		call loop
+  77               	.LM13:
+  78 0022 2097      		sbiw r28,0
+  79 0024 01F0      		breq .L12
+  80 0026 0E94 0000 		call _Z14serialEventRunv
+  81 002a 00C0      		rjmp .L12
+  82               	.LFE118:
+  84               		.weak	_Z14serialEventRunv
+ 133               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.cpp
+C:\Users\OPENMA~1\AppData\Local\Temp/ccbS9HZN.s:2      *ABS*:0000003f __SREG__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccbS9HZN.s:3      *ABS*:0000003e __SP_H__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccbS9HZN.s:4      *ABS*:0000003d __SP_L__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccbS9HZN.s:5      *ABS*:00000034 __CCP__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccbS9HZN.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccbS9HZN.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccbS9HZN.s:20     .text:00000000 atexit
+C:\Users\OPENMA~1\AppData\Local\Temp/ccbS9HZN.s:34     .text:00000006 initVariant
+C:\Users\OPENMA~1\AppData\Local\Temp/ccbS9HZN.s:46     .text:00000008 _Z8setupUSBv
+C:\Users\OPENMA~1\AppData\Local\Temp/ccbS9HZN.s:58     .text:0000000a main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+init
+setup
+_Z14serialEventRunv
+loop

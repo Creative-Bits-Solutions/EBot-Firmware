@@ -1,0 +1,49 @@
+#######################################
+# Syntax Coloring Map SD
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SD	KEYWORD1
+File	KEYWORD1
+Motors KEYWORD1
+SClock KEYWORD1
+
+IR KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+begin	KEYWORD2
+exists	KEYWORD2
+mkdir	KEYWORD2
+remove	KEYWORD2
+rmdir	KEYWORD2
+open	KEYWORD2
+close	KEYWORD2
+seek	KEYWORD2
+position	KEYWORD2
+size	KEYWORD2
+
+setML1Speed KEYWORD2
+setML2Speed KEYWORD2
+setMLSpeed KEYWORD2
+
+setMR1Speed KEYWORD2
+setMR2Speed KEYWORD2
+setMRSpeed KEYWORD2
+
+disable KEYWORD2
+
+mhz KEYWORD2
+
+
+	
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+FILE_READ	LITERAL1
+FILE_WRITE	LITERAL1

@@ -1,0 +1,206 @@
+   1               		.file	"wiring_shift.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	shiftOut
+  20               	shiftOut:
+  21               	.LFB6:
+  22               	.LM1:
+  23               	.LVL0:
+  24 0000 BF92      		push r11
+  25 0002 CF92      		push r12
+  26 0004 DF92      		push r13
+  27 0006 EF92      		push r14
+  28 0008 FF92      		push r15
+  29 000a 0F93      		push r16
+  30 000c 1F93      		push r17
+  31 000e CF93      		push r28
+  32 0010 DF93      		push r29
+  33               	/* prologue: function */
+  34               	/* frame size = 0 */
+  35 0012 E82E      		mov r14,r24
+  36 0014 F62E      		mov r15,r22
+  37 0016 B42E      		mov r11,r20
+  38               	.LM2:
+  39 0018 C7E0      		ldi r28,lo8(7)
+  40 001a D0E0      		ldi r29,hi8(7)
+  41 001c 022F      		mov r16,r18
+  42 001e 10E0      		ldi r17,lo8(0)
+  43               	.LVL1:
+  44               	.LM3:
+  45 0020 87E0      		ldi r24,lo8(7)
+  46 0022 C82E      		mov r12,r24
+  47 0024 D12C      		mov r13,__zero_reg__
+  48               	.LVL2:
+  49               	.L4:
+  50               	.LM4:
+  51 0026 BB20      		tst r11
+  52 0028 01F4      		brne .L2
+  53               	.LM5:
+  54 002a B601      		movw r22,r12
+  55 002c 6C1B      		sub r22,r28
+  56 002e 7D0B      		sbc r23,r29
+  57 0030 C801      		movw r24,r16
+  58 0032 00C0      		rjmp 2f
+  59 0034 9595      	1:	asr r25
+  60 0036 8795      		ror r24
+  61 0038 6A95      	2:	dec r22
+  62 003a 02F4      		brpl 1b
+  63 003c BC01      		movw r22,r24
+  64 003e 00C0      		rjmp .L7
+  65               	.LVL3:
+  66               	.L2:
+  67               	.LM6:
+  68 0040 B801      		movw r22,r16
+  69 0042 0C2E      		mov r0,r28
+  70 0044 00C0      		rjmp 2f
+  71 0046 7595      	1:	asr r23
+  72 0048 6795      		ror r22
+  73 004a 0A94      	2:	dec r0
+  74 004c 02F4      		brpl 1b
+  75               	.L7:
+  76 004e 6170      		andi r22,lo8(1)
+  77 0050 8E2D      		mov r24,r14
+  78 0052 0E94 0000 		call digitalWrite
+  79               	.LM7:
+  80 0056 8F2D      		mov r24,r15
+  81 0058 61E0      		ldi r22,lo8(1)
+  82 005a 0E94 0000 		call digitalWrite
+  83               	.LM8:
+  84 005e 8F2D      		mov r24,r15
+  85 0060 60E0      		ldi r22,lo8(0)
+  86 0062 0E94 0000 		call digitalWrite
+  87 0066 2197      		sbiw r28,1
+  88               	.LM9:
+  89 0068 9FEF      		ldi r25,hi8(-1)
+  90 006a CF3F      		cpi r28,lo8(-1)
+  91 006c D907      		cpc r29,r25
+  92 006e 01F4      		brne .L4
+  93               	/* epilogue start */
+  94               	.LM10:
+  95 0070 DF91      		pop r29
+  96 0072 CF91      		pop r28
+  97 0074 1F91      		pop r17
+  98               	.LVL4:
+  99 0076 0F91      		pop r16
+ 100               	.LVL5:
+ 101 0078 FF90      		pop r15
+ 102               	.LVL6:
+ 103 007a EF90      		pop r14
+ 104               	.LVL7:
+ 105 007c DF90      		pop r13
+ 106 007e CF90      		pop r12
+ 107 0080 BF90      		pop r11
+ 108               	.LVL8:
+ 109 0082 0895      		ret
+ 110               	.LFE6:
+ 112               	.global	shiftIn
+ 114               	shiftIn:
+ 115               	.LFB5:
+ 116               	.LM11:
+ 117               	.LVL9:
+ 118 0084 CF92      		push r12
+ 119 0086 DF92      		push r13
+ 120 0088 EF92      		push r14
+ 121 008a FF92      		push r15
+ 122 008c 0F93      		push r16
+ 123 008e 1F93      		push r17
+ 124 0090 CF93      		push r28
+ 125 0092 DF93      		push r29
+ 126               	/* prologue: function */
+ 127               	/* frame size = 0 */
+ 128 0094 F82E      		mov r15,r24
+ 129 0096 062F      		mov r16,r22
+ 130 0098 E42E      		mov r14,r20
+ 131               	.LM12:
+ 132 009a 10E0      		ldi r17,lo8(0)
+ 133               	.LVL10:
+ 134 009c C7E0      		ldi r28,lo8(7)
+ 135 009e D0E0      		ldi r29,hi8(7)
+ 136               	.LM13:
+ 137 00a0 97E0      		ldi r25,lo8(7)
+ 138 00a2 C92E      		mov r12,r25
+ 139 00a4 D12C      		mov r13,__zero_reg__
+ 140               	.LVL11:
+ 141               	.L11:
+ 142               	.LM14:
+ 143 00a6 802F      		mov r24,r16
+ 144 00a8 61E0      		ldi r22,lo8(1)
+ 145 00aa 0E94 0000 		call digitalWrite
+ 146               	.LM15:
+ 147 00ae EE20      		tst r14
+ 148 00b0 01F4      		brne .L9
+ 149               	.LM16:
+ 150 00b2 8F2D      		mov r24,r15
+ 151 00b4 0E94 0000 		call digitalRead
+ 152 00b8 9601      		movw r18,r12
+ 153 00ba 2C1B      		sub r18,r28
+ 154 00bc 3D0B      		sbc r19,r29
+ 155 00be 00C0      		rjmp 2f
+ 156 00c0 880F      	1:	lsl r24
+ 157 00c2 991F      		rol r25
+ 158 00c4 2A95      	2:	dec r18
+ 159 00c6 02F4      		brpl 1b
+ 160 00c8 00C0      		rjmp .L14
+ 161               	.L9:
+ 162               	.LM17:
+ 163 00ca 8F2D      		mov r24,r15
+ 164 00cc 0E94 0000 		call digitalRead
+ 165 00d0 0C2E      		mov r0,r28
+ 166 00d2 00C0      		rjmp 2f
+ 167 00d4 880F      	1:	lsl r24
+ 168 00d6 991F      		rol r25
+ 169 00d8 0A94      	2:	dec r0
+ 170 00da 02F4      		brpl 1b
+ 171               	.L14:
+ 172 00dc 182B      		or r17,r24
+ 173               	.LM18:
+ 174 00de 802F      		mov r24,r16
+ 175 00e0 60E0      		ldi r22,lo8(0)
+ 176 00e2 0E94 0000 		call digitalWrite
+ 177 00e6 2197      		sbiw r28,1
+ 178               	.LM19:
+ 179 00e8 8FEF      		ldi r24,hi8(-1)
+ 180 00ea CF3F      		cpi r28,lo8(-1)
+ 181 00ec D807      		cpc r29,r24
+ 182 00ee 01F4      		brne .L11
+ 183               	.LM20:
+ 184 00f0 812F      		mov r24,r17
+ 185               	/* epilogue start */
+ 186 00f2 DF91      		pop r29
+ 187 00f4 CF91      		pop r28
+ 188 00f6 1F91      		pop r17
+ 189               	.LVL12:
+ 190 00f8 0F91      		pop r16
+ 191               	.LVL13:
+ 192 00fa FF90      		pop r15
+ 193               	.LVL14:
+ 194 00fc EF90      		pop r14
+ 195               	.LVL15:
+ 196 00fe DF90      		pop r13
+ 197 0100 CF90      		pop r12
+ 198 0102 0895      		ret
+ 199               	.LFE5:
+ 233               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 wiring_shift.c
+C:\Users\OPENMA~1\AppData\Local\Temp/ccMXoyJ1.s:2      *ABS*:0000003f __SREG__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccMXoyJ1.s:3      *ABS*:0000003e __SP_H__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccMXoyJ1.s:4      *ABS*:0000003d __SP_L__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccMXoyJ1.s:5      *ABS*:00000034 __CCP__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccMXoyJ1.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccMXoyJ1.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccMXoyJ1.s:20     .text:00000000 shiftOut
+C:\Users\OPENMA~1\AppData\Local\Temp/ccMXoyJ1.s:114    .text:00000084 shiftIn
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+digitalWrite
+digitalRead

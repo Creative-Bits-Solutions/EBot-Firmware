@@ -1,0 +1,584 @@
+   1               		.file	"IPAddress.cpp"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	_ZN9IPAddressC2Ev
+  20               	_ZN9IPAddressC2Ev:
+  21               	.LFB125:
+  22               	.LM1:
+  23               	.LVL0:
+  24               	/* prologue: function */
+  25               	/* frame size = 0 */
+  26 0000 FC01      		movw r30,r24
+  27               	.LBB48:
+  28               	.LM2:
+  29 0002 80E0      		ldi r24,lo8(_ZTV9IPAddress+4)
+  30 0004 90E0      		ldi r25,hi8(_ZTV9IPAddress+4)
+  31               	.LVL1:
+  32 0006 9183      		std Z+1,r25
+  33 0008 8083      		st Z,r24
+  34               	.LM3:
+  35 000a 1282      		std Z+2,__zero_reg__
+  36 000c 1382      		std Z+3,__zero_reg__
+  37 000e 1482      		std Z+4,__zero_reg__
+  38 0010 1582      		std Z+5,__zero_reg__
+  39               	/* epilogue start */
+  40               	.LBE48:
+  41               	.LM4:
+  42 0012 0895      		ret
+  43               	.LFE125:
+  45               	.global	_ZN9IPAddressC1Ev
+  47               	_ZN9IPAddressC1Ev:
+  48               	.LFB126:
+  49               	.LM5:
+  50               	.LVL2:
+  51               	/* prologue: function */
+  52               	/* frame size = 0 */
+  53 0014 FC01      		movw r30,r24
+  54               	.LBB49:
+  55               	.LM6:
+  56 0016 80E0      		ldi r24,lo8(_ZTV9IPAddress+4)
+  57 0018 90E0      		ldi r25,hi8(_ZTV9IPAddress+4)
+  58               	.LVL3:
+  59 001a 9183      		std Z+1,r25
+  60 001c 8083      		st Z,r24
+  61               	.LM7:
+  62 001e 1282      		std Z+2,__zero_reg__
+  63 0020 1382      		std Z+3,__zero_reg__
+  64 0022 1482      		std Z+4,__zero_reg__
+  65 0024 1582      		std Z+5,__zero_reg__
+  66               	/* epilogue start */
+  67               	.LBE49:
+  68               	.LM8:
+  69 0026 0895      		ret
+  70               	.LFE126:
+  72               	.global	_ZN9IPAddressC2Ehhhh
+  74               	_ZN9IPAddressC2Ehhhh:
+  75               	.LFB128:
+  76               	.LM9:
+  77               	.LVL4:
+  78 0028 0F93      		push r16
+  79               	.LVL5:
+  80               	/* prologue: function */
+  81               	/* frame size = 0 */
+  82 002a FC01      		movw r30,r24
+  83               	.LBB50:
+  84               	.LM10:
+  85 002c 80E0      		ldi r24,lo8(_ZTV9IPAddress+4)
+  86 002e 90E0      		ldi r25,hi8(_ZTV9IPAddress+4)
+  87               	.LVL6:
+  88 0030 9183      		std Z+1,r25
+  89 0032 8083      		st Z,r24
+  90               	.LM11:
+  91 0034 6283      		std Z+2,r22
+  92               	.LM12:
+  93 0036 4383      		std Z+3,r20
+  94               	.LM13:
+  95 0038 2483      		std Z+4,r18
+  96               	.LM14:
+  97 003a 0583      		std Z+5,r16
+  98               	.LVL7:
+  99               	/* epilogue start */
+ 100               	.LBE50:
+ 101               	.LM15:
+ 102 003c 0F91      		pop r16
+ 103               	.LVL8:
+ 104 003e 0895      		ret
+ 105               	.LFE128:
+ 107               	.global	_ZN9IPAddressC1Ehhhh
+ 109               	_ZN9IPAddressC1Ehhhh:
+ 110               	.LFB129:
+ 111               	.LM16:
+ 112               	.LVL9:
+ 113 0040 0F93      		push r16
+ 114               	.LVL10:
+ 115               	/* prologue: function */
+ 116               	/* frame size = 0 */
+ 117 0042 FC01      		movw r30,r24
+ 118               	.LBB51:
+ 119               	.LM17:
+ 120 0044 80E0      		ldi r24,lo8(_ZTV9IPAddress+4)
+ 121 0046 90E0      		ldi r25,hi8(_ZTV9IPAddress+4)
+ 122               	.LVL11:
+ 123 0048 9183      		std Z+1,r25
+ 124 004a 8083      		st Z,r24
+ 125               	.LM18:
+ 126 004c 6283      		std Z+2,r22
+ 127               	.LM19:
+ 128 004e 4383      		std Z+3,r20
+ 129               	.LM20:
+ 130 0050 2483      		std Z+4,r18
+ 131               	.LM21:
+ 132 0052 0583      		std Z+5,r16
+ 133               	.LVL12:
+ 134               	/* epilogue start */
+ 135               	.LBE51:
+ 136               	.LM22:
+ 137 0054 0F91      		pop r16
+ 138               	.LVL13:
+ 139 0056 0895      		ret
+ 140               	.LFE129:
+ 142               	.global	_ZN9IPAddressC2Em
+ 144               	_ZN9IPAddressC2Em:
+ 145               	.LFB131:
+ 146               	.LM23:
+ 147               	.LVL14:
+ 148               	/* prologue: function */
+ 149               	/* frame size = 0 */
+ 150 0058 FC01      		movw r30,r24
+ 151               	.LBB52:
+ 152               	.LM24:
+ 153 005a 80E0      		ldi r24,lo8(_ZTV9IPAddress+4)
+ 154 005c 90E0      		ldi r25,hi8(_ZTV9IPAddress+4)
+ 155               	.LVL15:
+ 156 005e 9183      		std Z+1,r25
+ 157 0060 8083      		st Z,r24
+ 158               	.LM25:
+ 159 0062 4283      		std Z+2,r20
+ 160 0064 5383      		std Z+3,r21
+ 161 0066 6483      		std Z+4,r22
+ 162 0068 7583      		std Z+5,r23
+ 163               	/* epilogue start */
+ 164               	.LBE52:
+ 165               	.LM26:
+ 166 006a 0895      		ret
+ 167               	.LFE131:
+ 169               	.global	_ZN9IPAddressC1Em
+ 171               	_ZN9IPAddressC1Em:
+ 172               	.LFB132:
+ 173               	.LM27:
+ 174               	.LVL16:
+ 175               	/* prologue: function */
+ 176               	/* frame size = 0 */
+ 177 006c FC01      		movw r30,r24
+ 178               	.LBB53:
+ 179               	.LM28:
+ 180 006e 80E0      		ldi r24,lo8(_ZTV9IPAddress+4)
+ 181 0070 90E0      		ldi r25,hi8(_ZTV9IPAddress+4)
+ 182               	.LVL17:
+ 183 0072 9183      		std Z+1,r25
+ 184 0074 8083      		st Z,r24
+ 185               	.LM29:
+ 186 0076 4283      		std Z+2,r20
+ 187 0078 5383      		std Z+3,r21
+ 188 007a 6483      		std Z+4,r22
+ 189 007c 7583      		std Z+5,r23
+ 190               	/* epilogue start */
+ 191               	.LBE53:
+ 192               	.LM30:
+ 193 007e 0895      		ret
+ 194               	.LFE132:
+ 196               	.global	_ZN9IPAddress10fromStringEPKc
+ 198               	_ZN9IPAddress10fromStringEPKc:
+ 199               	.LFB136:
+ 200               	.LM31:
+ 201               	.LVL18:
+ 202 0080 CF93      		push r28
+ 203 0082 DF93      		push r29
+ 204               	/* prologue: function */
+ 205               	/* frame size = 0 */
+ 206 0084 EC01      		movw r28,r24
+ 207 0086 DB01      		movw r26,r22
+ 208               	.LM32:
+ 209 0088 20E0      		ldi r18,lo8(0)
+ 210 008a 30E0      		ldi r19,hi8(0)
+ 211               	.LVL19:
+ 212 008c 50E0      		ldi r21,lo8(0)
+ 213               	.LVL20:
+ 214 008e 00C0      		rjmp .L14
+ 215               	.LVL21:
+ 216               	.L18:
+ 217               	.LBB54:
+ 218               	.LBB55:
+ 219               	.LM33:
+ 220 0090 842F      		mov r24,r20
+ 221 0092 8053      		subi r24,lo8(-(-48))
+ 222 0094 8A30      		cpi r24,lo8(10)
+ 223 0096 00F4      		brsh .L15
+ 224               	.LM34:
+ 225 0098 C901      		movw r24,r18
+ 226 009a 73E0      		ldi r23,3
+ 227 009c 880F      	1:	lsl r24
+ 228 009e 991F      		rol r25
+ 229 00a0 7A95      		dec r23
+ 230 00a2 01F4      		brne 1b
+ 231 00a4 220F      		lsl r18
+ 232 00a6 331F      		rol r19
+ 233 00a8 820F      		add r24,r18
+ 234 00aa 931F      		adc r25,r19
+ 235 00ac 242F      		mov r18,r20
+ 236               	.LVL22:
+ 237 00ae 30E0      		ldi r19,lo8(0)
+ 238 00b0 2053      		subi r18,lo8(-(-48))
+ 239 00b2 3040      		sbci r19,hi8(-(-48))
+ 240               	.LVL23:
+ 241 00b4 280F      		add r18,r24
+ 242 00b6 391F      		adc r19,r25
+ 243               	.LM35:
+ 244 00b8 2F3F      		cpi r18,255
+ 245 00ba 3105      		cpc r19,__zero_reg__
+ 246 00bc 01F0      		breq .L17
+ 247 00be 00F0      		brlo .L17
+ 248 00c0 00C0      		rjmp .L16
+ 249               	.LVL24:
+ 250               	.L15:
+ 251               	.LM36:
+ 252 00c2 4E32      		cpi r20,lo8(46)
+ 253 00c4 01F4      		brne .L16
+ 254               	.LM37:
+ 255 00c6 5330      		cpi r21,lo8(3)
+ 256 00c8 01F0      		breq .L16
+ 257               	.LM38:
+ 258 00ca FE01      		movw r30,r28
+ 259 00cc E50F      		add r30,r21
+ 260 00ce F11D      		adc r31,__zero_reg__
+ 261 00d0 2283      		std Z+2,r18
+ 262 00d2 5F5F      		subi r21,lo8(-(1))
+ 263 00d4 20E0      		ldi r18,lo8(0)
+ 264 00d6 30E0      		ldi r19,hi8(0)
+ 265               	.L17:
+ 266               	.LM39:
+ 267 00d8 1196      		adiw r26,1
+ 268               	.LVL25:
+ 269               	.L14:
+ 270               	.LBE55:
+ 271               	.LM40:
+ 272 00da 4C91      		ld r20,X
+ 273 00dc 4423      		tst r20
+ 274 00de 01F4      		brne .L18
+ 275               	.LM41:
+ 276 00e0 5330      		cpi r21,lo8(3)
+ 277 00e2 01F4      		brne .L16
+ 278               	.LM42:
+ 279 00e4 2D83      		std Y+5,r18
+ 280 00e6 81E0      		ldi r24,lo8(1)
+ 281 00e8 00C0      		rjmp .L19
+ 282               	.LVL26:
+ 283               	.L16:
+ 284               	.LM43:
+ 285 00ea 80E0      		ldi r24,lo8(0)
+ 286               	.L19:
+ 287               	/* epilogue start */
+ 288               	.LBE54:
+ 289               	.LM44:
+ 290 00ec DF91      		pop r29
+ 291 00ee CF91      		pop r28
+ 292               	.LVL27:
+ 293 00f0 0895      		ret
+ 294               	.LFE136:
+ 296               	.global	_ZN9IPAddressaSEm
+ 298               	_ZN9IPAddressaSEm:
+ 299               	.LFB138:
+ 300               	.LM45:
+ 301               	.LVL28:
+ 302               	/* prologue: function */
+ 303               	/* frame size = 0 */
+ 304 00f2 FC01      		movw r30,r24
+ 305               	.LM46:
+ 306 00f4 4283      		std Z+2,r20
+ 307 00f6 5383      		std Z+3,r21
+ 308 00f8 6483      		std Z+4,r22
+ 309 00fa 7583      		std Z+5,r23
+ 310               	.LVL29:
+ 311               	/* epilogue start */
+ 312               	.LM47:
+ 313 00fc 0895      		ret
+ 314               	.LFE138:
+ 317               	_GLOBAL__I__ZN9IPAddressC2Ev:
+ 318               	.LFB142:
+ 319               	.LM48:
+ 320               	/* prologue: function */
+ 321               	/* frame size = 0 */
+ 322               	.LBB56:
+ 323               	.LBB57:
+ 324               	.LBB58:
+ 325               	.LBB59:
+ 326               	.LBB60:
+ 327               	.LM49:
+ 328 00fe 80E0      		ldi r24,lo8(_ZTV9IPAddress+4)
+ 329 0100 90E0      		ldi r25,hi8(_ZTV9IPAddress+4)
+ 330 0102 9093 0000 		sts (_ZL11INADDR_NONE)+1,r25
+ 331 0106 8093 0000 		sts _ZL11INADDR_NONE,r24
+ 332               	.LM50:
+ 333 010a 1092 0000 		sts _ZL11INADDR_NONE+2,__zero_reg__
+ 334               	.LM51:
+ 335 010e 1092 0000 		sts _ZL11INADDR_NONE+3,__zero_reg__
+ 336               	.LM52:
+ 337 0112 1092 0000 		sts _ZL11INADDR_NONE+4,__zero_reg__
+ 338               	.LM53:
+ 339 0116 1092 0000 		sts _ZL11INADDR_NONE+5,__zero_reg__
+ 340               	/* epilogue start */
+ 341               	.LBE60:
+ 342               	.LBE59:
+ 343               	.LBE58:
+ 344               	.LBE57:
+ 345               	.LBE56:
+ 346               	.LM54:
+ 347 011a 0895      		ret
+ 348               	.LFE142:
+ 350               		.global __do_global_ctors
+ 351               		.section .ctors,"a",@progbits
+ 352 0000 0000      		.word	gs(_GLOBAL__I__ZN9IPAddressC2Ev)
+ 353               		.text
+ 354               	.global	_ZNK9IPAddress7printToER5Print
+ 356               	_ZNK9IPAddress7printToER5Print:
+ 357               	.LFB140:
+ 358               	.LM55:
+ 359               	.LVL30:
+ 360 011c 8F92      		push r8
+ 361 011e 9F92      		push r9
+ 362 0120 AF92      		push r10
+ 363 0122 BF92      		push r11
+ 364 0124 CF92      		push r12
+ 365 0126 DF92      		push r13
+ 366 0128 EF92      		push r14
+ 367 012a FF92      		push r15
+ 368 012c 0F93      		push r16
+ 369 012e 1F93      		push r17
+ 370 0130 CF93      		push r28
+ 371 0132 DF93      		push r29
+ 372               	/* prologue: function */
+ 373               	/* frame size = 0 */
+ 374 0134 4C01      		movw r8,r24
+ 375 0136 6B01      		movw r12,r22
+ 376               	.LM56:
+ 377 0138 7C01      		movw r14,r24
+ 378 013a AA24      		clr r10
+ 379 013c BB24      		clr r11
+ 380               	.LVL31:
+ 381 013e C0E0      		ldi r28,lo8(0)
+ 382 0140 D0E0      		ldi r29,hi8(0)
+ 383               	.LVL32:
+ 384               	.L26:
+ 385               	.LBB61:
+ 386               	.LBB62:
+ 387               	.LM57:
+ 388 0142 C601      		movw r24,r12
+ 389               	.LVL33:
+ 390 0144 F701      		movw r30,r14
+ 391 0146 6281      		ldd r22,Z+2
+ 392 0148 4AE0      		ldi r20,lo8(10)
+ 393 014a 50E0      		ldi r21,hi8(10)
+ 394 014c 0E94 0000 		call _ZN5Print5printEhi
+ 395 0150 8C01      		movw r16,r24
+ 396               	.LM58:
+ 397 0152 C601      		movw r24,r12
+ 398 0154 6EE2      		ldi r22,lo8(46)
+ 399 0156 0E94 0000 		call _ZN5Print5printEc
+ 400               	.LM59:
+ 401 015a 080F      		add r16,r24
+ 402 015c 191F      		adc r17,r25
+ 403               	.LM60:
+ 404 015e A00E      		add r10,r16
+ 405 0160 B11E      		adc r11,r17
+ 406               	.LM61:
+ 407 0162 2196      		adiw r28,1
+ 408 0164 0894      		sec
+ 409 0166 E11C      		adc r14,__zero_reg__
+ 410 0168 F11C      		adc r15,__zero_reg__
+ 411 016a C330      		cpi r28,3
+ 412 016c D105      		cpc r29,__zero_reg__
+ 413 016e 01F4      		brne .L26
+ 414               	.LBE62:
+ 415               	.LM62:
+ 416 0170 C601      		movw r24,r12
+ 417 0172 F401      		movw r30,r8
+ 418 0174 6581      		ldd r22,Z+5
+ 419 0176 4AE0      		ldi r20,lo8(10)
+ 420 0178 50E0      		ldi r21,hi8(10)
+ 421 017a 0E94 0000 		call _ZN5Print5printEhi
+ 422 017e 9501      		movw r18,r10
+ 423 0180 280F      		add r18,r24
+ 424 0182 391F      		adc r19,r25
+ 425               	.LBE61:
+ 426               	.LM63:
+ 427 0184 C901      		movw r24,r18
+ 428               	/* epilogue start */
+ 429 0186 DF91      		pop r29
+ 430 0188 CF91      		pop r28
+ 431               	.LVL34:
+ 432 018a 1F91      		pop r17
+ 433 018c 0F91      		pop r16
+ 434 018e FF90      		pop r15
+ 435 0190 EF90      		pop r14
+ 436 0192 DF90      		pop r13
+ 437 0194 CF90      		pop r12
+ 438               	.LVL35:
+ 439 0196 BF90      		pop r11
+ 440 0198 AF90      		pop r10
+ 441               	.LVL36:
+ 442 019a 9F90      		pop r9
+ 443 019c 8F90      		pop r8
+ 444               	.LVL37:
+ 445 019e 0895      		ret
+ 446               	.LFE140:
+ 448               	.global	_ZNK9IPAddresseqEPKh
+ 450               	_ZNK9IPAddresseqEPKh:
+ 451               	.LFB139:
+ 452               	.LM64:
+ 453               	.LVL38:
+ 454               	/* prologue: function */
+ 455               	/* frame size = 0 */
+ 456               	.LM65:
+ 457 01a0 9C01      		movw r18,r24
+ 458 01a2 2E5F      		subi r18,lo8(-(2))
+ 459 01a4 3F4F      		sbci r19,hi8(-(2))
+ 460 01a6 CB01      		movw r24,r22
+ 461               	.LVL39:
+ 462 01a8 B901      		movw r22,r18
+ 463               	.LVL40:
+ 464 01aa 44E0      		ldi r20,lo8(4)
+ 465 01ac 50E0      		ldi r21,hi8(4)
+ 466 01ae 0E94 0000 		call memcmp
+ 467 01b2 9C01      		movw r18,r24
+ 468 01b4 80E0      		ldi r24,lo8(0)
+ 469 01b6 232B      		or r18,r19
+ 470 01b8 01F4      		brne .L30
+ 471 01ba 81E0      		ldi r24,lo8(1)
+ 472               	.L30:
+ 473               	.LM66:
+ 474 01bc 0895      		ret
+ 475               	.LFE139:
+ 477               	.global	_ZN9IPAddressaSEPKh
+ 479               	_ZN9IPAddressaSEPKh:
+ 480               	.LFB137:
+ 481               	.LM67:
+ 482               	.LVL41:
+ 483               	/* prologue: function */
+ 484               	/* frame size = 0 */
+ 485 01be 9C01      		movw r18,r24
+ 486 01c0 FB01      		movw r30,r22
+ 487               	.LM68:
+ 488 01c2 8081      		ld r24,Z
+ 489 01c4 9181      		ldd r25,Z+1
+ 490 01c6 A281      		ldd r26,Z+2
+ 491 01c8 B381      		ldd r27,Z+3
+ 492               	.LVL42:
+ 493 01ca F901      		movw r30,r18
+ 494 01cc 8283      		std Z+2,r24
+ 495 01ce 9383      		std Z+3,r25
+ 496 01d0 A483      		std Z+4,r26
+ 497 01d2 B583      		std Z+5,r27
+ 498               	.LM69:
+ 499 01d4 C901      		movw r24,r18
+ 500               	.LVL43:
+ 501               	/* epilogue start */
+ 502 01d6 0895      		ret
+ 503               	.LFE137:
+ 505               	.global	_ZN9IPAddressC1EPKh
+ 507               	_ZN9IPAddressC1EPKh:
+ 508               	.LFB135:
+ 509               	.LM70:
+ 510               	.LVL44:
+ 511               	/* prologue: function */
+ 512               	/* frame size = 0 */
+ 513 01d8 9C01      		movw r18,r24
+ 514 01da FB01      		movw r30,r22
+ 515               	.LBB63:
+ 516               	.LM71:
+ 517 01dc 80E0      		ldi r24,lo8(_ZTV9IPAddress+4)
+ 518 01de 90E0      		ldi r25,hi8(_ZTV9IPAddress+4)
+ 519               	.LVL45:
+ 520 01e0 D901      		movw r26,r18
+ 521 01e2 8D93      		st X+,r24
+ 522 01e4 9C93      		st X,r25
+ 523               	.LM72:
+ 524 01e6 8081      		ld r24,Z
+ 525 01e8 9181      		ldd r25,Z+1
+ 526 01ea A281      		ldd r26,Z+2
+ 527 01ec B381      		ldd r27,Z+3
+ 528 01ee F901      		movw r30,r18
+ 529 01f0 8283      		std Z+2,r24
+ 530 01f2 9383      		std Z+3,r25
+ 531 01f4 A483      		std Z+4,r26
+ 532 01f6 B583      		std Z+5,r27
+ 533               	/* epilogue start */
+ 534               	.LBE63:
+ 535               	.LM73:
+ 536 01f8 0895      		ret
+ 537               	.LFE135:
+ 539               	.global	_ZN9IPAddressC2EPKh
+ 541               	_ZN9IPAddressC2EPKh:
+ 542               	.LFB134:
+ 543               	.LM74:
+ 544               	.LVL46:
+ 545               	/* prologue: function */
+ 546               	/* frame size = 0 */
+ 547 01fa 9C01      		movw r18,r24
+ 548 01fc FB01      		movw r30,r22
+ 549               	.LBB64:
+ 550               	.LM75:
+ 551 01fe 80E0      		ldi r24,lo8(_ZTV9IPAddress+4)
+ 552 0200 90E0      		ldi r25,hi8(_ZTV9IPAddress+4)
+ 553               	.LVL47:
+ 554 0202 D901      		movw r26,r18
+ 555 0204 8D93      		st X+,r24
+ 556 0206 9C93      		st X,r25
+ 557               	.LM76:
+ 558 0208 8081      		ld r24,Z
+ 559 020a 9181      		ldd r25,Z+1
+ 560 020c A281      		ldd r26,Z+2
+ 561 020e B381      		ldd r27,Z+3
+ 562 0210 F901      		movw r30,r18
+ 563 0212 8283      		std Z+2,r24
+ 564 0214 9383      		std Z+3,r25
+ 565 0216 A483      		std Z+4,r26
+ 566 0218 B583      		std Z+5,r27
+ 567               	/* epilogue start */
+ 568               	.LBE64:
+ 569               	.LM77:
+ 570 021a 0895      		ret
+ 571               	.LFE134:
+ 573               		.weak	_ZTV9IPAddress
+ 574               		.data
+ 577               	_ZTV9IPAddress:
+ 578 0000 0000      		.word	0
+ 579 0002 0000      		.word	0
+ 580 0004 0000      		.word	gs(_ZNK9IPAddress7printToER5Print)
+ 581               		.lcomm _ZL11INADDR_NONE,6
+ 582               		.weak	_ZTV9Printable
+ 585               	_ZTV9Printable:
+ 586 0006 0000      		.word	0
+ 587 0008 0000      		.word	0
+ 588 000a 0000      		.word	gs(__cxa_pure_virtual)
+ 717               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 IPAddress.cpp
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:2      *ABS*:0000003f __SREG__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:3      *ABS*:0000003e __SP_H__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:4      *ABS*:0000003d __SP_L__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:5      *ABS*:00000034 __CCP__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:20     .text:00000000 _ZN9IPAddressC2Ev
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:577    .data:00000000 _ZTV9IPAddress
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:47     .text:00000014 _ZN9IPAddressC1Ev
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:74     .text:00000028 _ZN9IPAddressC2Ehhhh
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:109    .text:00000040 _ZN9IPAddressC1Ehhhh
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:144    .text:00000058 _ZN9IPAddressC2Em
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:171    .text:0000006c _ZN9IPAddressC1Em
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:198    .text:00000080 _ZN9IPAddress10fromStringEPKc
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:298    .text:000000f2 _ZN9IPAddressaSEm
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:317    .text:000000fe _GLOBAL__I__ZN9IPAddressC2Ev
+                             .bss:00000000 _ZL11INADDR_NONE
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:356    .text:0000011c _ZNK9IPAddress7printToER5Print
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:450    .text:000001a0 _ZNK9IPAddresseqEPKh
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:479    .text:000001be _ZN9IPAddressaSEPKh
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:507    .text:000001d8 _ZN9IPAddressC1EPKh
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:541    .text:000001fa _ZN9IPAddressC2EPKh
+C:\Users\OPENMA~1\AppData\Local\Temp/cc5A8VAA.s:585    .data:00000006 _ZTV9Printable
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__do_global_ctors
+_ZN5Print5printEhi
+_ZN5Print5printEc
+memcmp
+__cxa_pure_virtual

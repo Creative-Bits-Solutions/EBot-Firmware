@@ -1,0 +1,228 @@
+   1               		.file	"WInterrupts.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  19               	nothing:
+  20               	.LFB5:
+  21               	.LM1:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	/* epilogue start */
+  25               	.LM2:
+  26 0000 0895      		ret
+  27               	.LFE5:
+  29               	.global	attachInterrupt
+  31               	attachInterrupt:
+  32               	.LFB6:
+  33               	.LM3:
+  34               	.LVL0:
+  35               	/* prologue: function */
+  36               	/* frame size = 0 */
+  37               	.LM4:
+  38 0002 8230      		cpi r24,lo8(2)
+  39 0004 00F4      		brsh .L7
+  40               	.LM5:
+  41 0006 E82F      		mov r30,r24
+  42 0008 F0E0      		ldi r31,lo8(0)
+  43 000a EE0F      		lsl r30
+  44 000c FF1F      		rol r31
+  45 000e E050      		subi r30,lo8(-(intFunc))
+  46 0010 F040      		sbci r31,hi8(-(intFunc))
+  47 0012 7183      		std Z+1,r23
+  48 0014 6083      		st Z,r22
+  49               	.LM6:
+  50 0016 8823      		tst r24
+  51 0018 01F0      		breq .L5
+  52 001a 8130      		cpi r24,lo8(1)
+  53 001c 01F4      		brne .L7
+  54 001e 00C0      		rjmp .L8
+  55               	.L5:
+  56               	.LM7:
+  57 0020 8091 6900 		lds r24,105
+  58               	.LVL1:
+  59 0024 8C7F      		andi r24,lo8(-4)
+  60 0026 842B      		or r24,r20
+  61 0028 8093 6900 		sts 105,r24
+  62               	.LM8:
+  63 002c E89A      		sbi 61-32,0
+  64 002e 0895      		ret
+  65               	.LVL2:
+  66               	.L8:
+  67               	.LM9:
+  68 0030 8091 6900 		lds r24,105
+  69               	.LVL3:
+  70 0034 440F      		lsl r20
+  71 0036 551F      		rol r21
+  72 0038 440F      		lsl r20
+  73 003a 551F      		rol r21
+  74               	.LVL4:
+  75 003c 837F      		andi r24,lo8(-13)
+  76 003e 842B      		or r24,r20
+  77 0040 8093 6900 		sts 105,r24
+  78               	.LM10:
+  79 0044 E99A      		sbi 61-32,1
+  80               	.LVL5:
+  81               	.L7:
+  82 0046 0895      		ret
+  83               	.LFE6:
+  85               	.global	detachInterrupt
+  87               	detachInterrupt:
+  88               	.LFB7:
+  89               	.LM11:
+  90               	.LVL6:
+  91               	/* prologue: function */
+  92               	/* frame size = 0 */
+  93               	.LM12:
+  94 0048 8230      		cpi r24,lo8(2)
+  95 004a 00F4      		brsh .L14
+  96               	.LM13:
+  97 004c 8823      		tst r24
+  98 004e 01F0      		breq .L12
+  99 0050 8130      		cpi r24,lo8(1)
+ 100 0052 01F4      		brne .L11
+ 101 0054 00C0      		rjmp .L15
+ 102               	.L12:
+ 103               	.LM14:
+ 104 0056 E898      		cbi 61-32,0
+ 105 0058 00C0      		rjmp .L11
+ 106               	.L15:
+ 107               	.LM15:
+ 108 005a E998      		cbi 61-32,1
+ 109               	.L11:
+ 110               	.LM16:
+ 111 005c E82F      		mov r30,r24
+ 112 005e F0E0      		ldi r31,lo8(0)
+ 113 0060 EE0F      		lsl r30
+ 114 0062 FF1F      		rol r31
+ 115 0064 E050      		subi r30,lo8(-(intFunc))
+ 116 0066 F040      		sbci r31,hi8(-(intFunc))
+ 117 0068 80E0      		ldi r24,lo8(gs(nothing))
+ 118 006a 90E0      		ldi r25,hi8(gs(nothing))
+ 119               	.LVL7:
+ 120 006c 9183      		std Z+1,r25
+ 121 006e 8083      		st Z,r24
+ 122               	.LVL8:
+ 123               	.L14:
+ 124 0070 0895      		ret
+ 125               	.LFE7:
+ 127               	.global	__vector_1
+ 129               	__vector_1:
+ 130               	.LFB8:
+ 131               	.LM17:
+ 132 0072 1F92      		push __zero_reg__
+ 133 0074 0F92      		push r0
+ 134 0076 0FB6      		in r0,__SREG__
+ 135 0078 0F92      		push r0
+ 136 007a 1124      		clr __zero_reg__
+ 137 007c 2F93      		push r18
+ 138 007e 3F93      		push r19
+ 139 0080 4F93      		push r20
+ 140 0082 5F93      		push r21
+ 141 0084 6F93      		push r22
+ 142 0086 7F93      		push r23
+ 143 0088 8F93      		push r24
+ 144 008a 9F93      		push r25
+ 145 008c AF93      		push r26
+ 146 008e BF93      		push r27
+ 147 0090 EF93      		push r30
+ 148 0092 FF93      		push r31
+ 149               	/* prologue: Signal */
+ 150               	/* frame size = 0 */
+ 151               	.LM18:
+ 152 0094 E091 0000 		lds r30,intFunc
+ 153 0098 F091 0000 		lds r31,(intFunc)+1
+ 154 009c 0995      		icall
+ 155               	/* epilogue start */
+ 156 009e FF91      		pop r31
+ 157 00a0 EF91      		pop r30
+ 158 00a2 BF91      		pop r27
+ 159 00a4 AF91      		pop r26
+ 160 00a6 9F91      		pop r25
+ 161 00a8 8F91      		pop r24
+ 162 00aa 7F91      		pop r23
+ 163 00ac 6F91      		pop r22
+ 164 00ae 5F91      		pop r21
+ 165 00b0 4F91      		pop r20
+ 166 00b2 3F91      		pop r19
+ 167 00b4 2F91      		pop r18
+ 168 00b6 0F90      		pop r0
+ 169 00b8 0FBE      		out __SREG__,r0
+ 170 00ba 0F90      		pop r0
+ 171 00bc 1F90      		pop __zero_reg__
+ 172 00be 1895      		reti
+ 173               	.LFE8:
+ 175               	.global	__vector_2
+ 177               	__vector_2:
+ 178               	.LFB9:
+ 179               	.LM19:
+ 180 00c0 1F92      		push __zero_reg__
+ 181 00c2 0F92      		push r0
+ 182 00c4 0FB6      		in r0,__SREG__
+ 183 00c6 0F92      		push r0
+ 184 00c8 1124      		clr __zero_reg__
+ 185 00ca 2F93      		push r18
+ 186 00cc 3F93      		push r19
+ 187 00ce 4F93      		push r20
+ 188 00d0 5F93      		push r21
+ 189 00d2 6F93      		push r22
+ 190 00d4 7F93      		push r23
+ 191 00d6 8F93      		push r24
+ 192 00d8 9F93      		push r25
+ 193 00da AF93      		push r26
+ 194 00dc BF93      		push r27
+ 195 00de EF93      		push r30
+ 196 00e0 FF93      		push r31
+ 197               	/* prologue: Signal */
+ 198               	/* frame size = 0 */
+ 199               	.LM20:
+ 200 00e2 E091 0000 		lds r30,intFunc+2
+ 201 00e6 F091 0000 		lds r31,(intFunc+2)+1
+ 202 00ea 0995      		icall
+ 203               	/* epilogue start */
+ 204 00ec FF91      		pop r31
+ 205 00ee EF91      		pop r30
+ 206 00f0 BF91      		pop r27
+ 207 00f2 AF91      		pop r26
+ 208 00f4 9F91      		pop r25
+ 209 00f6 8F91      		pop r24
+ 210 00f8 7F91      		pop r23
+ 211 00fa 6F91      		pop r22
+ 212 00fc 5F91      		pop r21
+ 213 00fe 4F91      		pop r20
+ 214 0100 3F91      		pop r19
+ 215 0102 2F91      		pop r18
+ 216 0104 0F90      		pop r0
+ 217 0106 0FBE      		out __SREG__,r0
+ 218 0108 0F90      		pop r0
+ 219 010a 1F90      		pop __zero_reg__
+ 220 010c 1895      		reti
+ 221               	.LFE9:
+ 223               		.data
+ 226               	intFunc:
+ 227 0000 0000      		.word	gs(nothing)
+ 228 0002 0000      		.word	gs(nothing)
+ 285               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 WInterrupts.c
+C:\Users\OPENMA~1\AppData\Local\Temp/cck9HF4w.s:2      *ABS*:0000003f __SREG__
+C:\Users\OPENMA~1\AppData\Local\Temp/cck9HF4w.s:3      *ABS*:0000003e __SP_H__
+C:\Users\OPENMA~1\AppData\Local\Temp/cck9HF4w.s:4      *ABS*:0000003d __SP_L__
+C:\Users\OPENMA~1\AppData\Local\Temp/cck9HF4w.s:5      *ABS*:00000034 __CCP__
+C:\Users\OPENMA~1\AppData\Local\Temp/cck9HF4w.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/cck9HF4w.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/cck9HF4w.s:19     .text:00000000 nothing
+C:\Users\OPENMA~1\AppData\Local\Temp/cck9HF4w.s:31     .text:00000002 attachInterrupt
+C:\Users\OPENMA~1\AppData\Local\Temp/cck9HF4w.s:226    .data:00000000 intFunc
+C:\Users\OPENMA~1\AppData\Local\Temp/cck9HF4w.s:87     .text:00000048 detachInterrupt
+C:\Users\OPENMA~1\AppData\Local\Temp/cck9HF4w.s:129    .text:00000072 __vector_1
+C:\Users\OPENMA~1\AppData\Local\Temp/cck9HF4w.s:177    .text:000000c0 __vector_2
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

@@ -1,0 +1,253 @@
+   1               		.file	"wiring_analog.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	analogReference
+  20               	analogReference:
+  21               	.LFB5:
+  22               	.LM1:
+  23               	.LVL0:
+  24               	/* prologue: function */
+  25               	/* frame size = 0 */
+  26               	.LM2:
+  27 0000 8093 0000 		sts analog_reference,r24
+  28               	/* epilogue start */
+  29               	.LM3:
+  30 0004 0895      		ret
+  31               	.LFE5:
+  33               	.global	analogRead
+  35               	analogRead:
+  36               	.LFB6:
+  37               	.LM4:
+  38               	.LVL1:
+  39               	/* prologue: function */
+  40               	/* frame size = 0 */
+  41 0006 982F      		mov r25,r24
+  42               	.LM5:
+  43 0008 8E30      		cpi r24,lo8(14)
+  44 000a 00F0      		brlo .L4
+  45 000c 9E50      		subi r25,lo8(-(-14))
+  46               	.LVL2:
+  47               	.L4:
+  48               	.LM6:
+  49 000e 9770      		andi r25,lo8(7)
+  50 0010 8091 0000 		lds r24,analog_reference
+  51 0014 8295      		swap r24
+  52 0016 880F      		lsl r24
+  53 0018 880F      		lsl r24
+  54 001a 807C      		andi r24,lo8(-64)
+  55 001c 892B      		or r24,r25
+  56 001e 8093 7C00 		sts 124,r24
+  57               	.LM7:
+  58 0022 8091 7A00 		lds r24,122
+  59 0026 8064      		ori r24,lo8(64)
+  60 0028 8093 7A00 		sts 122,r24
+  61               	.L5:
+  62               	.LM8:
+  63 002c 8091 7A00 		lds r24,122
+  64 0030 86FD      		sbrc r24,6
+  65 0032 00C0      		rjmp .L5
+  66               	.LM9:
+  67 0034 2091 7800 		lds r18,120
+  68               	.LVL3:
+  69               	.LM10:
+  70 0038 4091 7900 		lds r20,121
+  71               	.LVL4:
+  72 003c 942F      		mov r25,r20
+  73               	.LVL5:
+  74 003e 80E0      		ldi r24,lo8(0)
+  75               	.LVL6:
+  76 0040 30E0      		ldi r19,lo8(0)
+  77 0042 282B      		or r18,r24
+  78 0044 392B      		or r19,r25
+  79               	.LVL7:
+  80               	.LM11:
+  81 0046 C901      		movw r24,r18
+  82               	.LVL8:
+  83               	/* epilogue start */
+  84 0048 0895      		ret
+  85               	.LFE6:
+  87               	.global	analogWrite
+  89               	analogWrite:
+  90               	.LFB7:
+  91               	.LM12:
+  92               	.LVL9:
+  93 004a 1F93      		push r17
+  94 004c CF93      		push r28
+  95 004e DF93      		push r29
+  96               	/* prologue: function */
+  97               	/* frame size = 0 */
+  98 0050 182F      		mov r17,r24
+  99 0052 EB01      		movw r28,r22
+ 100               	.LM13:
+ 101 0054 61E0      		ldi r22,lo8(1)
+ 102               	.LVL10:
+ 103 0056 0E94 0000 		call pinMode
+ 104               	.LVL11:
+ 105               	.LM14:
+ 106 005a 2097      		sbiw r28,0
+ 107 005c 01F4      		brne .+2
+ 108 005e 00C0      		rjmp .L23
+ 109               	.L9:
+ 110               	.LM15:
+ 111 0060 CF3F      		cpi r28,255
+ 112 0062 D105      		cpc r29,__zero_reg__
+ 113 0064 01F4      		brne .+2
+ 114 0066 00C0      		rjmp .L20
+ 115               	.L11:
+ 116               	.LBB2:
+ 117               	.LM16:
+ 118 0068 E12F      		mov r30,r17
+ 119 006a F0E0      		ldi r31,lo8(0)
+ 120               	.LVL12:
+ 121 006c E050      		subi r30,lo8(-(digital_pin_to_timer_PGM))
+ 122 006e F040      		sbci r31,hi8(-(digital_pin_to_timer_PGM))
+ 123               	.LVL13:
+ 124               	/* #APP */
+ 125               	 ;  122 "../ebot_arduino/cores/wiring_analog.c" 1
+ 126 0070 8491      		lpm r24, Z
+ 127               		
+ 128               	 ;  0 "" 2
+ 129               	.LVL14:
+ 130               	/* #NOAPP */
+ 131               	.LBE2:
+ 132 0072 8330      		cpi r24,lo8(3)
+ 133 0074 01F0      		breq .L15
+ 134 0076 8430      		cpi r24,lo8(4)
+ 135 0078 00F4      		brsh .L19
+ 136 007a 8130      		cpi r24,lo8(1)
+ 137 007c 01F0      		breq .L13
+ 138 007e 8230      		cpi r24,lo8(2)
+ 139 0080 01F4      		brne .L12
+ 140 0082 00C0      		rjmp .L24
+ 141               	.L19:
+ 142 0084 8730      		cpi r24,lo8(7)
+ 143 0086 01F0      		breq .L17
+ 144 0088 8830      		cpi r24,lo8(8)
+ 145 008a 01F0      		breq .L18
+ 146 008c 8430      		cpi r24,lo8(4)
+ 147 008e 01F4      		brne .L12
+ 148 0090 00C0      		rjmp .L25
+ 149               	.L13:
+ 150               	.LM17:
+ 151 0092 84B5      		in r24,68-32
+ 152               	.LVL15:
+ 153 0094 8068      		ori r24,lo8(-128)
+ 154 0096 84BD      		out 68-32,r24
+ 155               	.LM18:
+ 156 0098 C7BD      		out 71-32,r28
+ 157 009a 00C0      		rjmp .L21
+ 158               	.LVL16:
+ 159               	.L24:
+ 160               	.LM19:
+ 161 009c 84B5      		in r24,68-32
+ 162               	.LVL17:
+ 163 009e 8062      		ori r24,lo8(32)
+ 164 00a0 84BD      		out 68-32,r24
+ 165               	.LM20:
+ 166 00a2 C8BD      		out 72-32,r28
+ 167 00a4 00C0      		rjmp .L21
+ 168               	.LVL18:
+ 169               	.L15:
+ 170               	.LM21:
+ 171 00a6 8091 8000 		lds r24,128
+ 172               	.LVL19:
+ 173 00aa 8068      		ori r24,lo8(-128)
+ 174 00ac 8093 8000 		sts 128,r24
+ 175               	.LM22:
+ 176 00b0 D093 8900 		sts (136)+1,r29
+ 177 00b4 C093 8800 		sts 136,r28
+ 178 00b8 00C0      		rjmp .L21
+ 179               	.LVL20:
+ 180               	.L25:
+ 181               	.LM23:
+ 182 00ba 8091 8000 		lds r24,128
+ 183               	.LVL21:
+ 184 00be 8062      		ori r24,lo8(32)
+ 185 00c0 8093 8000 		sts 128,r24
+ 186               	.LM24:
+ 187 00c4 D093 8B00 		sts (138)+1,r29
+ 188 00c8 C093 8A00 		sts 138,r28
+ 189 00cc 00C0      		rjmp .L21
+ 190               	.LVL22:
+ 191               	.L17:
+ 192               	.LM25:
+ 193 00ce 8091 B000 		lds r24,176
+ 194               	.LVL23:
+ 195 00d2 8068      		ori r24,lo8(-128)
+ 196 00d4 8093 B000 		sts 176,r24
+ 197               	.LM26:
+ 198 00d8 C093 B300 		sts 179,r28
+ 199 00dc 00C0      		rjmp .L21
+ 200               	.LVL24:
+ 201               	.L18:
+ 202               	.LM27:
+ 203 00de 8091 B000 		lds r24,176
+ 204               	.LVL25:
+ 205 00e2 8062      		ori r24,lo8(32)
+ 206 00e4 8093 B000 		sts 176,r24
+ 207               	.LM28:
+ 208 00e8 C093 B400 		sts 180,r28
+ 209 00ec 00C0      		rjmp .L21
+ 210               	.LVL26:
+ 211               	.L12:
+ 212               	.LM29:
+ 213 00ee C038      		cpi r28,128
+ 214 00f0 D105      		cpc r29,__zero_reg__
+ 215 00f2 04F4      		brge .L20
+ 216               	.LVL27:
+ 217               	.L23:
+ 218               	.LM30:
+ 219 00f4 812F      		mov r24,r17
+ 220               	.LVL28:
+ 221 00f6 60E0      		ldi r22,lo8(0)
+ 222 00f8 00C0      		rjmp .L22
+ 223               	.LVL29:
+ 224               	.L20:
+ 225               	.LM31:
+ 226 00fa 812F      		mov r24,r17
+ 227               	.LVL30:
+ 228 00fc 61E0      		ldi r22,lo8(1)
+ 229               	.LVL31:
+ 230               	.L22:
+ 231 00fe 0E94 0000 		call digitalWrite
+ 232               	.LVL32:
+ 233               	.L21:
+ 234               	/* epilogue start */
+ 235               	.LM32:
+ 236 0102 DF91      		pop r29
+ 237 0104 CF91      		pop r28
+ 238               	.LVL33:
+ 239 0106 1F91      		pop r17
+ 240 0108 0895      		ret
+ 241               	.LFE7:
+ 243               	.global	analog_reference
+ 244               		.data
+ 247               	analog_reference:
+ 248 0000 01        		.byte	1
+ 289               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 wiring_analog.c
+C:\Users\OPENMA~1\AppData\Local\Temp/cc2vATKH.s:2      *ABS*:0000003f __SREG__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc2vATKH.s:3      *ABS*:0000003e __SP_H__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc2vATKH.s:4      *ABS*:0000003d __SP_L__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc2vATKH.s:5      *ABS*:00000034 __CCP__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc2vATKH.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc2vATKH.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc2vATKH.s:20     .text:00000000 analogReference
+C:\Users\OPENMA~1\AppData\Local\Temp/cc2vATKH.s:247    .data:00000000 analog_reference
+C:\Users\OPENMA~1\AppData\Local\Temp/cc2vATKH.s:35     .text:00000006 analogRead
+C:\Users\OPENMA~1\AppData\Local\Temp/cc2vATKH.s:89     .text:0000004a analogWrite
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+pinMode
+digital_pin_to_timer_PGM
+digitalWrite

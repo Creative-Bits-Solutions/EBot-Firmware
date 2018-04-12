@@ -1,0 +1,514 @@
+   1               		.file	"wiring.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	__vector_16
+  20               	__vector_16:
+  21               	.LFB5:
+  22               	.LM1:
+  23 0000 1F92      		push __zero_reg__
+  24 0002 0F92      		push r0
+  25 0004 0FB6      		in r0,__SREG__
+  26 0006 0F92      		push r0
+  27 0008 1124      		clr __zero_reg__
+  28 000a 2F93      		push r18
+  29 000c 3F93      		push r19
+  30 000e 8F93      		push r24
+  31 0010 9F93      		push r25
+  32 0012 AF93      		push r26
+  33 0014 BF93      		push r27
+  34               	/* prologue: Signal */
+  35               	/* frame size = 0 */
+  36               	.LM2:
+  37 0016 8091 0000 		lds r24,timer0_millis
+  38 001a 9091 0000 		lds r25,(timer0_millis)+1
+  39 001e A091 0000 		lds r26,(timer0_millis)+2
+  40 0022 B091 0000 		lds r27,(timer0_millis)+3
+  41               	.LVL0:
+  42               	.LM3:
+  43 0026 3091 0000 		lds r19,timer0_fract
+  44               	.LVL1:
+  45               	.LM4:
+  46 002a 0196      		adiw r24,1
+  47 002c A11D      		adc r26,__zero_reg__
+  48 002e B11D      		adc r27,__zero_reg__
+  49               	.LM5:
+  50 0030 232F      		mov r18,r19
+  51 0032 2D5F      		subi r18,lo8(-(3))
+  52               	.LVL2:
+  53               	.LM6:
+  54 0034 2D37      		cpi r18,lo8(125)
+  55 0036 00F0      		brlo .L2
+  56               	.LM7:
+  57 0038 2D57      		subi r18,lo8(-(-125))
+  58               	.LM8:
+  59 003a 0196      		adiw r24,1
+  60 003c A11D      		adc r26,__zero_reg__
+  61 003e B11D      		adc r27,__zero_reg__
+  62               	.L2:
+  63               	.LM9:
+  64 0040 2093 0000 		sts timer0_fract,r18
+  65               	.LM10:
+  66 0044 8093 0000 		sts timer0_millis,r24
+  67 0048 9093 0000 		sts (timer0_millis)+1,r25
+  68 004c A093 0000 		sts (timer0_millis)+2,r26
+  69 0050 B093 0000 		sts (timer0_millis)+3,r27
+  70               	.LM11:
+  71 0054 8091 0000 		lds r24,timer0_overflow_count
+  72 0058 9091 0000 		lds r25,(timer0_overflow_count)+1
+  73 005c A091 0000 		lds r26,(timer0_overflow_count)+2
+  74 0060 B091 0000 		lds r27,(timer0_overflow_count)+3
+  75               	.LVL3:
+  76 0064 0196      		adiw r24,1
+  77 0066 A11D      		adc r26,__zero_reg__
+  78 0068 B11D      		adc r27,__zero_reg__
+  79 006a 8093 0000 		sts timer0_overflow_count,r24
+  80 006e 9093 0000 		sts (timer0_overflow_count)+1,r25
+  81 0072 A093 0000 		sts (timer0_overflow_count)+2,r26
+  82 0076 B093 0000 		sts (timer0_overflow_count)+3,r27
+  83               	/* epilogue start */
+  84               	.LM12:
+  85 007a BF91      		pop r27
+  86 007c AF91      		pop r26
+  87 007e 9F91      		pop r25
+  88 0080 8F91      		pop r24
+  89 0082 3F91      		pop r19
+  90 0084 2F91      		pop r18
+  91               	.LVL4:
+  92 0086 0F90      		pop r0
+  93 0088 0FBE      		out __SREG__,r0
+  94 008a 0F90      		pop r0
+  95 008c 1F90      		pop __zero_reg__
+  96 008e 1895      		reti
+  97               	.LFE5:
+  99               	.global	millis
+ 101               	millis:
+ 102               	.LFB6:
+ 103               	.LM13:
+ 104               	/* prologue: function */
+ 105               	/* frame size = 0 */
+ 106               	.LM14:
+ 107 0090 8FB7      		in r24,__SREG__
+ 108               	.LVL5:
+ 109               	.LM15:
+ 110               	/* #APP */
+ 111               	 ;  72 "../ebot_arduino/cores/wiring.c" 1
+ 112 0092 F894      		cli
+ 113               	 ;  0 "" 2
+ 114               	.LM16:
+ 115               	/* #NOAPP */
+ 116 0094 2091 0000 		lds r18,timer0_millis
+ 117 0098 3091 0000 		lds r19,(timer0_millis)+1
+ 118 009c 4091 0000 		lds r20,(timer0_millis)+2
+ 119 00a0 5091 0000 		lds r21,(timer0_millis)+3
+ 120               	.LVL6:
+ 121               	.LM17:
+ 122 00a4 8FBF      		out __SREG__,r24
+ 123               	.LM18:
+ 124 00a6 B901      		movw r22,r18
+ 125               	.LVL7:
+ 126 00a8 CA01      		movw r24,r20
+ 127               	.LVL8:
+ 128               	/* epilogue start */
+ 129 00aa 0895      		ret
+ 130               	.LFE6:
+ 132               	.global	micros
+ 134               	micros:
+ 135               	.LFB7:
+ 136               	.LM19:
+ 137               	/* prologue: function */
+ 138               	/* frame size = 0 */
+ 139               	.LM20:
+ 140 00ac 9FB7      		in r25,__SREG__
+ 141               	.LVL9:
+ 142               	.LM21:
+ 143               	/* #APP */
+ 144               	 ;  83 "../ebot_arduino/cores/wiring.c" 1
+ 145 00ae F894      		cli
+ 146               	 ;  0 "" 2
+ 147               	.LM22:
+ 148               	/* #NOAPP */
+ 149 00b0 2091 0000 		lds r18,timer0_overflow_count
+ 150 00b4 3091 0000 		lds r19,(timer0_overflow_count)+1
+ 151 00b8 4091 0000 		lds r20,(timer0_overflow_count)+2
+ 152 00bc 5091 0000 		lds r21,(timer0_overflow_count)+3
+ 153               	.LVL10:
+ 154               	.LM23:
+ 155 00c0 86B5      		in r24,70-32
+ 156               	.LVL11:
+ 157               	.LM24:
+ 158 00c2 A89B      		sbis 53-32,0
+ 159 00c4 00C0      		rjmp .L7
+ 160 00c6 8F3F      		cpi r24,lo8(-1)
+ 161 00c8 01F0      		breq .L7
+ 162               	.LM25:
+ 163 00ca 2F5F      		subi r18,lo8(-(1))
+ 164 00cc 3F4F      		sbci r19,hi8(-(1))
+ 165 00ce 4F4F      		sbci r20,hlo8(-(1))
+ 166 00d0 5F4F      		sbci r21,hhi8(-(1))
+ 167               	.L7:
+ 168               	.LM26:
+ 169 00d2 9FBF      		out __SREG__,r25
+ 170 00d4 542F      		mov r21,r20
+ 171 00d6 432F      		mov r20,r19
+ 172 00d8 322F      		mov r19,r18
+ 173 00da 2227      		clr r18
+ 174               	.LVL12:
+ 175 00dc 280F      		add r18,r24
+ 176 00de 311D      		adc r19,__zero_reg__
+ 177 00e0 411D      		adc r20,__zero_reg__
+ 178 00e2 511D      		adc r21,__zero_reg__
+ 179 00e4 82E0      		ldi r24,2
+ 180 00e6 220F      	1:	lsl r18
+ 181 00e8 331F      		rol r19
+ 182 00ea 441F      		rol r20
+ 183 00ec 551F      		rol r21
+ 184 00ee 8A95      		dec r24
+ 185 00f0 01F4      		brne 1b
+ 186               	.LVL13:
+ 187               	.LM27:
+ 188 00f2 B901      		movw r22,r18
+ 189 00f4 CA01      		movw r24,r20
+ 190               	/* epilogue start */
+ 191 00f6 0895      		ret
+ 192               	.LFE7:
+ 194               	.global	delayMicroseconds
+ 196               	delayMicroseconds:
+ 197               	.LFB9:
+ 198               	.LM28:
+ 199               	.LVL14:
+ 200               	/* prologue: function */
+ 201               	/* frame size = 0 */
+ 202               	.LM29:
+ 203 00f8 8230      		cpi r24,2
+ 204 00fa 9105      		cpc r25,__zero_reg__
+ 205 00fc 00F0      		brlo .L11
+ 206               	.LM30:
+ 207 00fe 880F      		lsl r24
+ 208 0100 991F      		rol r25
+ 209 0102 880F      		lsl r24
+ 210 0104 991F      		rol r25
+ 211               	.LVL15:
+ 212               	.LM31:
+ 213 0106 0597      		sbiw r24,5
+ 214               	.LM32:
+ 215               	/* #APP */
+ 216               	 ;  234 "../ebot_arduino/cores/wiring.c" 1
+ 217 0108 0197      		1: sbiw r24,1
+ 218 010a 01F4      		brne 1b
+ 219               	 ;  0 "" 2
+ 220               	/* #NOAPP */
+ 221               	.L11:
+ 222 010c 0895      		ret
+ 223               	.LFE9:
+ 225               	.global	init
+ 227               	init:
+ 228               	.LFB10:
+ 229               	.LM33:
+ 230               	/* prologue: function */
+ 231               	/* frame size = 0 */
+ 232               	.LM34:
+ 233               	/* #APP */
+ 234               	 ;  245 "../ebot_arduino/cores/wiring.c" 1
+ 235 010e 7894      		sei
+ 236               	 ;  0 "" 2
+ 237               	.LM35:
+ 238               	/* #NOAPP */
+ 239 0110 84B5      		in r24,68-32
+ 240 0112 8260      		ori r24,lo8(2)
+ 241 0114 84BD      		out 68-32,r24
+ 242               	.LM36:
+ 243 0116 84B5      		in r24,68-32
+ 244 0118 8160      		ori r24,lo8(1)
+ 245 011a 84BD      		out 68-32,r24
+ 246               	.LM37:
+ 247 011c 85B5      		in r24,69-32
+ 248 011e 8260      		ori r24,lo8(2)
+ 249 0120 85BD      		out 69-32,r24
+ 250               	.LM38:
+ 251 0122 85B5      		in r24,69-32
+ 252 0124 8160      		ori r24,lo8(1)
+ 253 0126 85BD      		out 69-32,r24
+ 254               	.LM39:
+ 255 0128 EEE6      		ldi r30,lo8(110)
+ 256 012a F0E0      		ldi r31,hi8(110)
+ 257 012c 8081      		ld r24,Z
+ 258 012e 8160      		ori r24,lo8(1)
+ 259 0130 8083      		st Z,r24
+ 260               	.LM40:
+ 261 0132 E1E8      		ldi r30,lo8(129)
+ 262 0134 F0E0      		ldi r31,hi8(129)
+ 263 0136 1082      		st Z,__zero_reg__
+ 264               	.LM41:
+ 265 0138 8081      		ld r24,Z
+ 266 013a 8260      		ori r24,lo8(2)
+ 267 013c 8083      		st Z,r24
+ 268               	.LM42:
+ 269 013e 8081      		ld r24,Z
+ 270 0140 8160      		ori r24,lo8(1)
+ 271 0142 8083      		st Z,r24
+ 272               	.LM43:
+ 273 0144 E0E8      		ldi r30,lo8(128)
+ 274 0146 F0E0      		ldi r31,hi8(128)
+ 275 0148 8081      		ld r24,Z
+ 276 014a 8160      		ori r24,lo8(1)
+ 277 014c 8083      		st Z,r24
+ 278               	.LM44:
+ 279 014e E1EB      		ldi r30,lo8(177)
+ 280 0150 F0E0      		ldi r31,hi8(177)
+ 281 0152 8081      		ld r24,Z
+ 282 0154 8460      		ori r24,lo8(4)
+ 283 0156 8083      		st Z,r24
+ 284               	.LM45:
+ 285 0158 E0EB      		ldi r30,lo8(176)
+ 286 015a F0E0      		ldi r31,hi8(176)
+ 287 015c 8081      		ld r24,Z
+ 288 015e 8160      		ori r24,lo8(1)
+ 289 0160 8083      		st Z,r24
+ 290               	.LM46:
+ 291 0162 EAE7      		ldi r30,lo8(122)
+ 292 0164 F0E0      		ldi r31,hi8(122)
+ 293 0166 8081      		ld r24,Z
+ 294 0168 8460      		ori r24,lo8(4)
+ 295 016a 8083      		st Z,r24
+ 296               	.LM47:
+ 297 016c 8081      		ld r24,Z
+ 298 016e 8260      		ori r24,lo8(2)
+ 299 0170 8083      		st Z,r24
+ 300               	.LM48:
+ 301 0172 8081      		ld r24,Z
+ 302 0174 8160      		ori r24,lo8(1)
+ 303 0176 8083      		st Z,r24
+ 304               	.LM49:
+ 305 0178 8081      		ld r24,Z
+ 306 017a 8068      		ori r24,lo8(-128)
+ 307 017c 8083      		st Z,r24
+ 308               	.LM50:
+ 309 017e 1092 C100 		sts 193,__zero_reg__
+ 310               	/* epilogue start */
+ 311               	.LM51:
+ 312 0182 0895      		ret
+ 313               	.LFE10:
+ 315               	.global	delay
+ 317               	delay:
+ 318               	.LFB8:
+ 319               	.LM52:
+ 320               	.LVL16:
+ 321 0184 AF92      		push r10
+ 322 0186 BF92      		push r11
+ 323 0188 CF92      		push r12
+ 324 018a DF92      		push r13
+ 325 018c EF92      		push r14
+ 326 018e FF92      		push r15
+ 327 0190 0F93      		push r16
+ 328 0192 1F93      		push r17
+ 329               	/* prologue: function */
+ 330               	/* frame size = 0 */
+ 331 0194 5B01      		movw r10,r22
+ 332 0196 6C01      		movw r12,r24
+ 333               	.LBB6:
+ 334               	.LBB7:
+ 335               	.LM53:
+ 336 0198 3FB7      		in r19,__SREG__
+ 337               	.LVL17:
+ 338               	.LM54:
+ 339               	/* #APP */
+ 340               	 ;  83 "../ebot_arduino/cores/wiring.c" 1
+ 341 019a F894      		cli
+ 342               	 ;  0 "" 2
+ 343               	.LM55:
+ 344               	/* #NOAPP */
+ 345 019c 8091 0000 		lds r24,timer0_overflow_count
+ 346 01a0 9091 0000 		lds r25,(timer0_overflow_count)+1
+ 347 01a4 A091 0000 		lds r26,(timer0_overflow_count)+2
+ 348 01a8 B091 0000 		lds r27,(timer0_overflow_count)+3
+ 349               	.LVL18:
+ 350               	.LM56:
+ 351 01ac 26B5      		in r18,70-32
+ 352               	.LVL19:
+ 353               	.LM57:
+ 354 01ae A89B      		sbis 53-32,0
+ 355 01b0 00C0      		rjmp .L15
+ 356               	.LVL20:
+ 357 01b2 2F3F      		cpi r18,lo8(-1)
+ 358 01b4 01F0      		breq .L15
+ 359               	.LM58:
+ 360 01b6 0196      		adiw r24,1
+ 361 01b8 A11D      		adc r26,__zero_reg__
+ 362 01ba B11D      		adc r27,__zero_reg__
+ 363               	.L15:
+ 364               	.LM59:
+ 365 01bc 3FBF      		out __SREG__,r19
+ 366               	.LM60:
+ 367 01be EE24      		clr r14
+ 368 01c0 F82E      		mov r15,r24
+ 369 01c2 092F      		mov r16,r25
+ 370 01c4 1A2F      		mov r17,r26
+ 371               	.LVL21:
+ 372 01c6 E20E      		add r14,r18
+ 373 01c8 F11C      		adc r15,__zero_reg__
+ 374 01ca 011D      		adc r16,__zero_reg__
+ 375 01cc 111D      		adc r17,__zero_reg__
+ 376 01ce 52E0      		ldi r21,2
+ 377 01d0 EE0C      	1:	lsl r14
+ 378 01d2 FF1C      		rol r15
+ 379 01d4 001F      		rol r16
+ 380 01d6 111F      		rol r17
+ 381 01d8 5A95      		dec r21
+ 382 01da 01F4      		brne 1b
+ 383 01dc 00C0      		rjmp .L24
+ 384               	.L20:
+ 385               	.LBE7:
+ 386               	.LBE6:
+ 387               	.LM61:
+ 388 01de 0E94 0000 		call yield
+ 389               	.LVL22:
+ 390 01e2 00C0      		rjmp .L17
+ 391               	.L19:
+ 392               	.LM62:
+ 393 01e4 0894      		sec
+ 394 01e6 A108      		sbc r10,__zero_reg__
+ 395 01e8 B108      		sbc r11,__zero_reg__
+ 396 01ea C108      		sbc r12,__zero_reg__
+ 397 01ec D108      		sbc r13,__zero_reg__
+ 398               	.LM63:
+ 399 01ee 88EE      		ldi r24,lo8(1000)
+ 400 01f0 93E0      		ldi r25,hi8(1000)
+ 401 01f2 A0E0      		ldi r26,hlo8(1000)
+ 402 01f4 B0E0      		ldi r27,hhi8(1000)
+ 403 01f6 E80E      		add r14,r24
+ 404 01f8 F91E      		adc r15,r25
+ 405 01fa 0A1F      		adc r16,r26
+ 406 01fc 1B1F      		adc r17,r27
+ 407               	.LM64:
+ 408 01fe A114      		cp r10,__zero_reg__
+ 409 0200 B104      		cpc r11,__zero_reg__
+ 410 0202 C104      		cpc r12,__zero_reg__
+ 411 0204 D104      		cpc r13,__zero_reg__
+ 412 0206 01F0      		breq .L24
+ 413               	.L17:
+ 414               	.LBB8:
+ 415               	.LBB9:
+ 416               	.LM65:
+ 417 0208 3FB7      		in r19,__SREG__
+ 418               	.LVL23:
+ 419               	.LM66:
+ 420               	/* #APP */
+ 421               	 ;  83 "../ebot_arduino/cores/wiring.c" 1
+ 422 020a F894      		cli
+ 423               	 ;  0 "" 2
+ 424               	.LM67:
+ 425               	/* #NOAPP */
+ 426 020c 8091 0000 		lds r24,timer0_overflow_count
+ 427 0210 9091 0000 		lds r25,(timer0_overflow_count)+1
+ 428 0214 A091 0000 		lds r26,(timer0_overflow_count)+2
+ 429 0218 B091 0000 		lds r27,(timer0_overflow_count)+3
+ 430               	.LVL24:
+ 431               	.LM68:
+ 432 021c 26B5      		in r18,70-32
+ 433               	.LVL25:
+ 434               	.LM69:
+ 435 021e A89B      		sbis 53-32,0
+ 436 0220 00C0      		rjmp .L18
+ 437 0222 2F3F      		cpi r18,lo8(-1)
+ 438 0224 01F0      		breq .L18
+ 439               	.LM70:
+ 440 0226 0196      		adiw r24,1
+ 441 0228 A11D      		adc r26,__zero_reg__
+ 442 022a B11D      		adc r27,__zero_reg__
+ 443               	.L18:
+ 444               	.LM71:
+ 445 022c 3FBF      		out __SREG__,r19
+ 446               	.LBE9:
+ 447               	.LBE8:
+ 448               	.LM72:
+ 449 022e BA2F      		mov r27,r26
+ 450 0230 A92F      		mov r26,r25
+ 451 0232 982F      		mov r25,r24
+ 452 0234 8827      		clr r24
+ 453               	.LVL26:
+ 454 0236 820F      		add r24,r18
+ 455 0238 911D      		adc r25,__zero_reg__
+ 456 023a A11D      		adc r26,__zero_reg__
+ 457 023c B11D      		adc r27,__zero_reg__
+ 458 023e 32E0      		ldi r19,2
+ 459 0240 880F      	1:	lsl r24
+ 460 0242 991F      		rol r25
+ 461 0244 AA1F      		rol r26
+ 462 0246 BB1F      		rol r27
+ 463 0248 3A95      		dec r19
+ 464 024a 01F4      		brne 1b
+ 465               	.LVL27:
+ 466 024c 8E19      		sub r24,r14
+ 467 024e 9F09      		sbc r25,r15
+ 468 0250 A00B      		sbc r26,r16
+ 469 0252 B10B      		sbc r27,r17
+ 470 0254 885E      		subi r24,lo8(1000)
+ 471 0256 9340      		sbci r25,hi8(1000)
+ 472 0258 A040      		sbci r26,hlo8(1000)
+ 473 025a B040      		sbci r27,hhi8(1000)
+ 474               	.LVL28:
+ 475 025c 00F0      		brlo .+2
+ 476 025e 00C0      		rjmp .L19
+ 477               	.LVL29:
+ 478               	.L24:
+ 479               	.LM73:
+ 480 0260 A114      		cp r10,__zero_reg__
+ 481 0262 B104      		cpc r11,__zero_reg__
+ 482 0264 C104      		cpc r12,__zero_reg__
+ 483 0266 D104      		cpc r13,__zero_reg__
+ 484 0268 01F0      		breq .+2
+ 485 026a 00C0      		rjmp .L20
+ 486               	/* epilogue start */
+ 487               	.LM74:
+ 488 026c 1F91      		pop r17
+ 489 026e 0F91      		pop r16
+ 490 0270 FF90      		pop r15
+ 491 0272 EF90      		pop r14
+ 492               	.LVL30:
+ 493 0274 DF90      		pop r13
+ 494 0276 CF90      		pop r12
+ 495 0278 BF90      		pop r11
+ 496 027a AF90      		pop r10
+ 497               	.LVL31:
+ 498 027c 0895      		ret
+ 499               	.LFE8:
+ 501               	.global	timer0_overflow_count
+ 502               	.global	timer0_overflow_count
+ 503               		.section .bss
+ 506               	timer0_overflow_count:
+ 507 0000 0000 0000 		.skip 4,0
+ 508               	.global	timer0_millis
+ 509               	.global	timer0_millis
+ 512               	timer0_millis:
+ 513 0004 0000 0000 		.skip 4,0
+ 514               		.lcomm timer0_fract,1
+ 579               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 wiring.c
+C:\Users\OPENMA~1\AppData\Local\Temp/ccobanRD.s:2      *ABS*:0000003f __SREG__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccobanRD.s:3      *ABS*:0000003e __SP_H__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccobanRD.s:4      *ABS*:0000003d __SP_L__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccobanRD.s:5      *ABS*:00000034 __CCP__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccobanRD.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccobanRD.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccobanRD.s:20     .text:00000000 __vector_16
+C:\Users\OPENMA~1\AppData\Local\Temp/ccobanRD.s:512    .bss:00000004 timer0_millis
+                             .bss:00000008 timer0_fract
+C:\Users\OPENMA~1\AppData\Local\Temp/ccobanRD.s:506    .bss:00000000 timer0_overflow_count
+C:\Users\OPENMA~1\AppData\Local\Temp/ccobanRD.s:101    .text:00000090 millis
+C:\Users\OPENMA~1\AppData\Local\Temp/ccobanRD.s:134    .text:000000ac micros
+C:\Users\OPENMA~1\AppData\Local\Temp/ccobanRD.s:196    .text:000000f8 delayMicroseconds
+C:\Users\OPENMA~1\AppData\Local\Temp/ccobanRD.s:227    .text:0000010e init
+C:\Users\OPENMA~1\AppData\Local\Temp/ccobanRD.s:317    .text:00000184 delay
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+yield

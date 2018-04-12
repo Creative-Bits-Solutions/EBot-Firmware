@@ -1,0 +1,602 @@
+   1               		.file	"wiring_digital.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	pinMode
+  20               	pinMode:
+  21               	.LFB5:
+  22               	.LM1:
+  23               	.LVL0:
+  24 0000 CF93      		push r28
+  25 0002 DF93      		push r29
+  26               	/* prologue: function */
+  27               	/* frame size = 0 */
+  28               	.LBB14:
+  29               	.LM2:
+  30 0004 482F      		mov r20,r24
+  31 0006 50E0      		ldi r21,lo8(0)
+  32 0008 CA01      		movw r24,r20
+  33               	.LVL1:
+  34 000a 8050      		subi r24,lo8(-(digital_pin_to_bit_mask_PGM))
+  35 000c 9040      		sbci r25,hi8(-(digital_pin_to_bit_mask_PGM))
+  36 000e FC01      		movw r30,r24
+  37               	/* #APP */
+  38               	 ;  31 "../ebot_arduino/cores/wiring_digital.c" 1
+  39 0010 3491      		lpm r19, Z
+  40               		
+  41               	 ;  0 "" 2
+  42               	.LVL2:
+  43               	/* #NOAPP */
+  44               	.LBE14:
+  45               	.LBB15:
+  46               	.LM3:
+  47 0012 4050      		subi r20,lo8(-(digital_pin_to_port_PGM))
+  48 0014 5040      		sbci r21,hi8(-(digital_pin_to_port_PGM))
+  49 0016 FA01      		movw r30,r20
+  50               	/* #APP */
+  51               	 ;  32 "../ebot_arduino/cores/wiring_digital.c" 1
+  52 0018 8491      		lpm r24, Z
+  53               		
+  54               	 ;  0 "" 2
+  55               	.LVL3:
+  56               	/* #NOAPP */
+  57               	.LBE15:
+  58               	.LM4:
+  59 001a 8823      		tst r24
+  60 001c 01F0      		breq .L5
+  61               	.LBB16:
+  62               	.LM5:
+  63 001e 90E0      		ldi r25,lo8(0)
+  64 0020 880F      		lsl r24
+  65 0022 991F      		rol r25
+  66               	.LVL4:
+  67 0024 FC01      		movw r30,r24
+  68               	.LVL5:
+  69 0026 E050      		subi r30,lo8(-(port_to_mode_PGM))
+  70 0028 F040      		sbci r31,hi8(-(port_to_mode_PGM))
+  71               	/* #APP */
+  72               	 ;  38 "../ebot_arduino/cores/wiring_digital.c" 1
+  73 002a A591      		lpm r26, Z+
+  74 002c B491      		lpm r27, Z
+  75               		
+  76               	 ;  0 "" 2
+  77               	.LVL6:
+  78               	/* #NOAPP */
+  79               	.LBE16:
+  80               	.LBB17:
+  81               	.LM6:
+  82 002e FC01      		movw r30,r24
+  83               	.LVL7:
+  84 0030 E050      		subi r30,lo8(-(port_to_output_PGM))
+  85 0032 F040      		sbci r31,hi8(-(port_to_output_PGM))
+  86               	/* #APP */
+  87               	 ;  39 "../ebot_arduino/cores/wiring_digital.c" 1
+  88 0034 C591      		lpm r28, Z+
+  89 0036 D491      		lpm r29, Z
+  90               		
+  91               	 ;  0 "" 2
+  92               	.LVL8:
+  93               	/* #NOAPP */
+  94               	.LBE17:
+  95               	.LM7:
+  96 0038 6623      		tst r22
+  97 003a 01F4      		brne .L3
+  98               	.LBB18:
+  99               	.LM8:
+ 100 003c 2FB7      		in r18,__SREG__
+ 101               	.LVL9:
+ 102               	.LM9:
+ 103               	/* #APP */
+ 104               	 ;  43 "../ebot_arduino/cores/wiring_digital.c" 1
+ 105 003e F894      		cli
+ 106               	 ;  0 "" 2
+ 107               	.LM10:
+ 108               	/* #NOAPP */
+ 109 0040 8C91      		ld r24,X
+ 110 0042 932F      		mov r25,r19
+ 111 0044 9095      		com r25
+ 112 0046 8923      		and r24,r25
+ 113 0048 8C93      		st X,r24
+ 114               	.LM11:
+ 115 004a 8881      		ld r24,Y
+ 116 004c 8923      		and r24,r25
+ 117 004e 00C0      		rjmp .L6
+ 118               	.LVL10:
+ 119               	.L3:
+ 120               	.LBE18:
+ 121               	.LM12:
+ 122 0050 6230      		cpi r22,lo8(2)
+ 123 0052 01F4      		brne .L4
+ 124               	.LBB19:
+ 125               	.LM13:
+ 126 0054 2FB7      		in r18,__SREG__
+ 127               	.LVL11:
+ 128               	.LM14:
+ 129               	/* #APP */
+ 130               	 ;  49 "../ebot_arduino/cores/wiring_digital.c" 1
+ 131 0056 F894      		cli
+ 132               	 ;  0 "" 2
+ 133               	.LM15:
+ 134               	/* #NOAPP */
+ 135 0058 8C91      		ld r24,X
+ 136 005a 932F      		mov r25,r19
+ 137 005c 9095      		com r25
+ 138 005e 8923      		and r24,r25
+ 139 0060 8C93      		st X,r24
+ 140               	.LM16:
+ 141 0062 8881      		ld r24,Y
+ 142 0064 832B      		or r24,r19
+ 143               	.LVL12:
+ 144               	.L6:
+ 145 0066 8883      		st Y,r24
+ 146               	.LM17:
+ 147 0068 2FBF      		out __SREG__,r18
+ 148 006a 00C0      		rjmp .L5
+ 149               	.LVL13:
+ 150               	.L4:
+ 151               	.LBE19:
+ 152               	.LBB20:
+ 153               	.LM18:
+ 154 006c 9FB7      		in r25,__SREG__
+ 155               	.LVL14:
+ 156               	.LM19:
+ 157               	/* #APP */
+ 158               	 ;  55 "../ebot_arduino/cores/wiring_digital.c" 1
+ 159 006e F894      		cli
+ 160               	 ;  0 "" 2
+ 161               	.LM20:
+ 162               	/* #NOAPP */
+ 163 0070 8C91      		ld r24,X
+ 164 0072 832B      		or r24,r19
+ 165 0074 8C93      		st X,r24
+ 166               	.LM21:
+ 167 0076 9FBF      		out __SREG__,r25
+ 168               	.LVL15:
+ 169               	.L5:
+ 170               	/* epilogue start */
+ 171               	.LBE20:
+ 172               	.LM22:
+ 173 0078 DF91      		pop r29
+ 174 007a CF91      		pop r28
+ 175               	.LVL16:
+ 176 007c 0895      		ret
+ 177               	.LFE5:
+ 179               	.global	digitalWrite
+ 181               	digitalWrite:
+ 182               	.LFB7:
+ 183               	.LM23:
+ 184               	.LVL17:
+ 185               	/* prologue: function */
+ 186               	/* frame size = 0 */
+ 187               	.LBB21:
+ 188               	.LM24:
+ 189 007e 482F      		mov r20,r24
+ 190 0080 50E0      		ldi r21,lo8(0)
+ 191 0082 CA01      		movw r24,r20
+ 192               	.LVL18:
+ 193 0084 8050      		subi r24,lo8(-(digital_pin_to_timer_PGM))
+ 194 0086 9040      		sbci r25,hi8(-(digital_pin_to_timer_PGM))
+ 195 0088 FC01      		movw r30,r24
+ 196               	/* #APP */
+ 197               	 ;  140 "../ebot_arduino/cores/wiring_digital.c" 1
+ 198 008a 2491      		lpm r18, Z
+ 199               		
+ 200               	 ;  0 "" 2
+ 201               	.LVL19:
+ 202               	/* #NOAPP */
+ 203               	.LBE21:
+ 204               	.LBB22:
+ 205               	.LM25:
+ 206 008c CA01      		movw r24,r20
+ 207 008e 8050      		subi r24,lo8(-(digital_pin_to_bit_mask_PGM))
+ 208 0090 9040      		sbci r25,hi8(-(digital_pin_to_bit_mask_PGM))
+ 209 0092 FC01      		movw r30,r24
+ 210               	/* #APP */
+ 211               	 ;  141 "../ebot_arduino/cores/wiring_digital.c" 1
+ 212 0094 9491      		lpm r25, Z
+ 213               		
+ 214               	 ;  0 "" 2
+ 215               	.LVL20:
+ 216               	/* #NOAPP */
+ 217               	.LBE22:
+ 218               	.LBB23:
+ 219               	.LM26:
+ 220 0096 4050      		subi r20,lo8(-(digital_pin_to_port_PGM))
+ 221 0098 5040      		sbci r21,hi8(-(digital_pin_to_port_PGM))
+ 222 009a FA01      		movw r30,r20
+ 223               	/* #APP */
+ 224               	 ;  142 "../ebot_arduino/cores/wiring_digital.c" 1
+ 225 009c 3491      		lpm r19, Z
+ 226               		
+ 227               	 ;  0 "" 2
+ 228               	.LVL21:
+ 229               	/* #NOAPP */
+ 230               	.LBE23:
+ 231               	.LM27:
+ 232 009e 3323      		tst r19
+ 233 00a0 01F4      		brne .+2
+ 234 00a2 00C0      		rjmp .L19
+ 235               	.LM28:
+ 236 00a4 2223      		tst r18
+ 237 00a6 01F0      		breq .L9
+ 238               	.LBB24:
+ 239               	.LBB25:
+ 240               	.LM29:
+ 241 00a8 2330      		cpi r18,lo8(3)
+ 242 00aa 01F0      		breq .L12
+ 243 00ac 2430      		cpi r18,lo8(4)
+ 244 00ae 00F4      		brsh .L16
+ 245 00b0 2130      		cpi r18,lo8(1)
+ 246 00b2 01F0      		breq .L10
+ 247 00b4 2230      		cpi r18,lo8(2)
+ 248 00b6 01F4      		brne .L9
+ 249 00b8 00C0      		rjmp .L24
+ 250               	.L16:
+ 251 00ba 2730      		cpi r18,lo8(7)
+ 252 00bc 01F0      		breq .L14
+ 253 00be 2830      		cpi r18,lo8(8)
+ 254 00c0 01F0      		breq .L15
+ 255 00c2 2430      		cpi r18,lo8(4)
+ 256 00c4 01F4      		brne .L9
+ 257 00c6 00C0      		rjmp .L25
+ 258               	.L12:
+ 259               	.LM30:
+ 260 00c8 8091 8000 		lds r24,128
+ 261 00cc 8F77      		andi r24,lo8(127)
+ 262 00ce 00C0      		rjmp .L20
+ 263               	.L25:
+ 264               	.LM31:
+ 265 00d0 8091 8000 		lds r24,128
+ 266 00d4 8F7D      		andi r24,lo8(-33)
+ 267               	.L20:
+ 268 00d6 8093 8000 		sts 128,r24
+ 269 00da 00C0      		rjmp .L9
+ 270               	.L10:
+ 271               	.LM32:
+ 272 00dc 84B5      		in r24,68-32
+ 273 00de 8F77      		andi r24,lo8(127)
+ 274 00e0 00C0      		rjmp .L22
+ 275               	.L24:
+ 276               	.LM33:
+ 277 00e2 84B5      		in r24,68-32
+ 278 00e4 8F7D      		andi r24,lo8(-33)
+ 279               	.L22:
+ 280 00e6 84BD      		out 68-32,r24
+ 281 00e8 00C0      		rjmp .L9
+ 282               	.L14:
+ 283               	.LM34:
+ 284 00ea 8091 B000 		lds r24,176
+ 285 00ee 8F77      		andi r24,lo8(127)
+ 286 00f0 00C0      		rjmp .L21
+ 287               	.L15:
+ 288               	.LM35:
+ 289 00f2 8091 B000 		lds r24,176
+ 290 00f6 8F7D      		andi r24,lo8(-33)
+ 291               	.L21:
+ 292 00f8 8093 B000 		sts 176,r24
+ 293               	.L9:
+ 294               	.LBE25:
+ 295               	.LBE24:
+ 296               	.LBB26:
+ 297               	.LM36:
+ 298 00fc E32F      		mov r30,r19
+ 299               	.LVL22:
+ 300 00fe F0E0      		ldi r31,lo8(0)
+ 301               	.LVL23:
+ 302 0100 EE0F      		lsl r30
+ 303 0102 FF1F      		rol r31
+ 304               	.LVL24:
+ 305 0104 E050      		subi r30,lo8(-(port_to_output_PGM))
+ 306 0106 F040      		sbci r31,hi8(-(port_to_output_PGM))
+ 307               	/* #APP */
+ 308               	 ;  151 "../ebot_arduino/cores/wiring_digital.c" 1
+ 309 0108 A591      		lpm r26, Z+
+ 310 010a B491      		lpm r27, Z
+ 311               		
+ 312               	 ;  0 "" 2
+ 313               	.LVL25:
+ 314               	/* #NOAPP */
+ 315               	.LBE26:
+ 316               	.LM37:
+ 317 010c 2FB7      		in r18,__SREG__
+ 318               	.LVL26:
+ 319               	.LM38:
+ 320               	/* #APP */
+ 321               	 ;  154 "../ebot_arduino/cores/wiring_digital.c" 1
+ 322 010e F894      		cli
+ 323               	 ;  0 "" 2
+ 324               	.LM39:
+ 325               	/* #NOAPP */
+ 326 0110 6623      		tst r22
+ 327 0112 01F4      		brne .L17
+ 328               	.LM40:
+ 329 0114 8C91      		ld r24,X
+ 330 0116 9095      		com r25
+ 331 0118 8923      		and r24,r25
+ 332 011a 00C0      		rjmp .L23
+ 333               	.L17:
+ 334               	.LM41:
+ 335 011c 8C91      		ld r24,X
+ 336 011e 892B      		or r24,r25
+ 337               	.L23:
+ 338 0120 8C93      		st X,r24
+ 339               	.LM42:
+ 340 0122 2FBF      		out __SREG__,r18
+ 341               	.LVL27:
+ 342               	.L19:
+ 343 0124 0895      		ret
+ 344               	.LFE7:
+ 346               	.global	digitalRead
+ 348               	digitalRead:
+ 349               	.LFB8:
+ 350               	.LM43:
+ 351               	.LVL28:
+ 352               	/* prologue: function */
+ 353               	/* frame size = 0 */
+ 354               	.LBB27:
+ 355               	.LM44:
+ 356 0126 682F      		mov r22,r24
+ 357 0128 70E0      		ldi r23,lo8(0)
+ 358 012a CB01      		movw r24,r22
+ 359               	.LVL29:
+ 360 012c 8050      		subi r24,lo8(-(digital_pin_to_timer_PGM))
+ 361 012e 9040      		sbci r25,hi8(-(digital_pin_to_timer_PGM))
+ 362 0130 FC01      		movw r30,r24
+ 363               	/* #APP */
+ 364               	 ;  167 "../ebot_arduino/cores/wiring_digital.c" 1
+ 365 0132 2491      		lpm r18, Z
+ 366               		
+ 367               	 ;  0 "" 2
+ 368               	.LVL30:
+ 369               	/* #NOAPP */
+ 370               	.LBE27:
+ 371               	.LBB28:
+ 372               	.LM45:
+ 373 0134 CB01      		movw r24,r22
+ 374 0136 8050      		subi r24,lo8(-(digital_pin_to_bit_mask_PGM))
+ 375 0138 9040      		sbci r25,hi8(-(digital_pin_to_bit_mask_PGM))
+ 376 013a FC01      		movw r30,r24
+ 377               	/* #APP */
+ 378               	 ;  168 "../ebot_arduino/cores/wiring_digital.c" 1
+ 379 013c 4491      		lpm r20, Z
+ 380               		
+ 381               	 ;  0 "" 2
+ 382               	.LVL31:
+ 383               	/* #NOAPP */
+ 384               	.LBE28:
+ 385               	.LBB29:
+ 386               	.LM46:
+ 387 013e 6050      		subi r22,lo8(-(digital_pin_to_port_PGM))
+ 388 0140 7040      		sbci r23,hi8(-(digital_pin_to_port_PGM))
+ 389 0142 FB01      		movw r30,r22
+ 390               	/* #APP */
+ 391               	 ;  169 "../ebot_arduino/cores/wiring_digital.c" 1
+ 392 0144 9491      		lpm r25, Z
+ 393               		
+ 394               	 ;  0 "" 2
+ 395               	.LVL32:
+ 396               	/* #NOAPP */
+ 397               	.LBE29:
+ 398               	.LM47:
+ 399 0146 9923      		tst r25
+ 400 0148 01F4      		brne .L27
+ 401 014a 20E0      		ldi r18,lo8(0)
+ 402 014c 30E0      		ldi r19,hi8(0)
+ 403               	.LVL33:
+ 404 014e 00C0      		rjmp .L28
+ 405               	.LVL34:
+ 406               	.L27:
+ 407               	.LM48:
+ 408 0150 2223      		tst r18
+ 409 0152 01F0      		breq .L29
+ 410               	.LBB30:
+ 411               	.LBB31:
+ 412               	.LM49:
+ 413 0154 2330      		cpi r18,lo8(3)
+ 414 0156 01F0      		breq .L32
+ 415 0158 2430      		cpi r18,lo8(4)
+ 416 015a 00F4      		brsh .L36
+ 417 015c 2130      		cpi r18,lo8(1)
+ 418 015e 01F0      		breq .L30
+ 419 0160 2230      		cpi r18,lo8(2)
+ 420 0162 01F4      		brne .L29
+ 421 0164 00C0      		rjmp .L42
+ 422               	.L36:
+ 423 0166 2730      		cpi r18,lo8(7)
+ 424 0168 01F0      		breq .L34
+ 425 016a 2830      		cpi r18,lo8(8)
+ 426 016c 01F0      		breq .L35
+ 427 016e 2430      		cpi r18,lo8(4)
+ 428 0170 01F4      		brne .L29
+ 429 0172 00C0      		rjmp .L43
+ 430               	.L32:
+ 431               	.LM50:
+ 432 0174 8091 8000 		lds r24,128
+ 433 0178 8F77      		andi r24,lo8(127)
+ 434 017a 00C0      		rjmp .L39
+ 435               	.L43:
+ 436               	.LM51:
+ 437 017c 8091 8000 		lds r24,128
+ 438 0180 8F7D      		andi r24,lo8(-33)
+ 439               	.L39:
+ 440 0182 8093 8000 		sts 128,r24
+ 441 0186 00C0      		rjmp .L29
+ 442               	.L30:
+ 443               	.LM52:
+ 444 0188 84B5      		in r24,68-32
+ 445 018a 8F77      		andi r24,lo8(127)
+ 446 018c 00C0      		rjmp .L41
+ 447               	.L42:
+ 448               	.LM53:
+ 449 018e 84B5      		in r24,68-32
+ 450 0190 8F7D      		andi r24,lo8(-33)
+ 451               	.L41:
+ 452 0192 84BD      		out 68-32,r24
+ 453 0194 00C0      		rjmp .L29
+ 454               	.L34:
+ 455               	.LM54:
+ 456 0196 8091 B000 		lds r24,176
+ 457 019a 8F77      		andi r24,lo8(127)
+ 458 019c 00C0      		rjmp .L40
+ 459               	.L35:
+ 460               	.LM55:
+ 461 019e 8091 B000 		lds r24,176
+ 462 01a2 8F7D      		andi r24,lo8(-33)
+ 463               	.L40:
+ 464 01a4 8093 B000 		sts 176,r24
+ 465               	.L29:
+ 466               	.LBE31:
+ 467               	.LBE30:
+ 468               	.LBB32:
+ 469               	.LM56:
+ 470 01a8 892F      		mov r24,r25
+ 471               	.LVL35:
+ 472 01aa 90E0      		ldi r25,lo8(0)
+ 473               	.LVL36:
+ 474 01ac 880F      		lsl r24
+ 475 01ae 991F      		rol r25
+ 476               	.LVL37:
+ 477 01b0 8050      		subi r24,lo8(-(port_to_input_PGM))
+ 478 01b2 9040      		sbci r25,hi8(-(port_to_input_PGM))
+ 479 01b4 FC01      		movw r30,r24
+ 480               	/* #APP */
+ 481               	 ;  177 "../ebot_arduino/cores/wiring_digital.c" 1
+ 482 01b6 A591      		lpm r26, Z+
+ 483 01b8 B491      		lpm r27, Z
+ 484               		
+ 485               	 ;  0 "" 2
+ 486               	.LVL38:
+ 487               	/* #NOAPP */
+ 488               	.LBE32:
+ 489 01ba 8C91      		ld r24,X
+ 490               	.LVL39:
+ 491 01bc 20E0      		ldi r18,lo8(0)
+ 492 01be 30E0      		ldi r19,hi8(0)
+ 493               	.LVL40:
+ 494 01c0 8423      		and r24,r20
+ 495 01c2 01F0      		breq .L28
+ 496 01c4 21E0      		ldi r18,lo8(1)
+ 497 01c6 30E0      		ldi r19,hi8(1)
+ 498               	.LVL41:
+ 499               	.L28:
+ 500               	.LM57:
+ 501 01c8 C901      		movw r24,r18
+ 502               	/* epilogue start */
+ 503 01ca 0895      		ret
+ 504               	.LFE8:
+ 506               	.global	port_to_mode_PGM
+ 507               		.section	.progmem.data,"a",@progbits
+ 510               	port_to_mode_PGM:
+ 511 0000 0000      		.word	0
+ 512 0002 0000      		.word	0
+ 513 0004 2400      		.word	36
+ 514 0006 2700      		.word	39
+ 515 0008 2A00      		.word	42
+ 516               	.global	port_to_output_PGM
+ 519               	port_to_output_PGM:
+ 520 000a 0000      		.word	0
+ 521 000c 0000      		.word	0
+ 522 000e 2500      		.word	37
+ 523 0010 2800      		.word	40
+ 524 0012 2B00      		.word	43
+ 525               	.global	port_to_input_PGM
+ 528               	port_to_input_PGM:
+ 529 0014 0000      		.word	0
+ 530 0016 0000      		.word	0
+ 531 0018 2300      		.word	35
+ 532 001a 2600      		.word	38
+ 533 001c 2900      		.word	41
+ 534               	.global	digital_pin_to_port_PGM
+ 537               	digital_pin_to_port_PGM:
+ 538 001e 04        		.byte	4
+ 539 001f 04        		.byte	4
+ 540 0020 04        		.byte	4
+ 541 0021 04        		.byte	4
+ 542 0022 04        		.byte	4
+ 543 0023 04        		.byte	4
+ 544 0024 04        		.byte	4
+ 545 0025 04        		.byte	4
+ 546 0026 02        		.byte	2
+ 547 0027 02        		.byte	2
+ 548 0028 02        		.byte	2
+ 549 0029 02        		.byte	2
+ 550 002a 02        		.byte	2
+ 551 002b 02        		.byte	2
+ 552 002c 03        		.byte	3
+ 553 002d 03        		.byte	3
+ 554 002e 03        		.byte	3
+ 555 002f 03        		.byte	3
+ 556 0030 03        		.byte	3
+ 557 0031 03        		.byte	3
+ 558               	.global	digital_pin_to_bit_mask_PGM
+ 561               	digital_pin_to_bit_mask_PGM:
+ 562 0032 01        		.byte	1
+ 563 0033 02        		.byte	2
+ 564 0034 04        		.byte	4
+ 565 0035 08        		.byte	8
+ 566 0036 10        		.byte	16
+ 567 0037 20        		.byte	32
+ 568 0038 40        		.byte	64
+ 569 0039 80        		.byte	-128
+ 570 003a 01        		.byte	1
+ 571 003b 02        		.byte	2
+ 572 003c 04        		.byte	4
+ 573 003d 08        		.byte	8
+ 574 003e 10        		.byte	16
+ 575 003f 20        		.byte	32
+ 576 0040 01        		.byte	1
+ 577 0041 02        		.byte	2
+ 578 0042 04        		.byte	4
+ 579 0043 08        		.byte	8
+ 580 0044 10        		.byte	16
+ 581 0045 20        		.byte	32
+ 582               	.global	digital_pin_to_timer_PGM
+ 585               	digital_pin_to_timer_PGM:
+ 586 0046 00        		.byte	0
+ 587 0047 00        		.byte	0
+ 588 0048 00        		.byte	0
+ 589 0049 08        		.byte	8
+ 590 004a 00        		.byte	0
+ 591 004b 02        		.byte	2
+ 592 004c 01        		.byte	1
+ 593 004d 00        		.byte	0
+ 594 004e 00        		.byte	0
+ 595 004f 03        		.byte	3
+ 596 0050 04        		.byte	4
+ 597 0051 07        		.byte	7
+ 598 0052 00        		.byte	0
+ 599 0053 00        		.byte	0
+ 600 0054 00        		.byte	0
+ 601 0055 00        		.byte	0
+ 602 0056 00        		.byte	0
+ 603 0057 00        		.byte	0
+ 604 0058 00        		.byte	0
+ 605 0059 00        		.byte	0
+ 646               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 wiring_digital.c
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:2      *ABS*:0000003f __SREG__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:3      *ABS*:0000003e __SP_H__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:4      *ABS*:0000003d __SP_L__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:5      *ABS*:00000034 __CCP__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:20     .text:00000000 pinMode
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:561    .progmem.data:00000032 digital_pin_to_bit_mask_PGM
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:537    .progmem.data:0000001e digital_pin_to_port_PGM
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:510    .progmem.data:00000000 port_to_mode_PGM
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:519    .progmem.data:0000000a port_to_output_PGM
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:181    .text:0000007e digitalWrite
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:585    .progmem.data:00000046 digital_pin_to_timer_PGM
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:348    .text:00000126 digitalRead
+C:\Users\OPENMA~1\AppData\Local\Temp/cc4w7FfP.s:528    .progmem.data:00000014 port_to_input_PGM
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

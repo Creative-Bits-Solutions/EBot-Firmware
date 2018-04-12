@@ -1,0 +1,530 @@
+   1               		.file	"wiring_pulse.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	pulseIn
+  20               	pulseIn:
+  21               	.LFB5:
+  22               	.LM1:
+  23               	.LVL0:
+  24 0000 8F92      		push r8
+  25 0002 9F92      		push r9
+  26 0004 AF92      		push r10
+  27 0006 BF92      		push r11
+  28 0008 CF92      		push r12
+  29 000a DF92      		push r13
+  30 000c EF92      		push r14
+  31 000e FF92      		push r15
+  32 0010 0F93      		push r16
+  33 0012 1F93      		push r17
+  34 0014 CF93      		push r28
+  35 0016 DF93      		push r29
+  36               	/* prologue: function */
+  37               	/* frame size = 0 */
+  38               	.LBB2:
+  39               	.LM2:
+  40 0018 A82F      		mov r26,r24
+  41 001a B0E0      		ldi r27,lo8(0)
+  42 001c CD01      		movw r24,r26
+  43               	.LVL1:
+  44 001e 8050      		subi r24,lo8(-(digital_pin_to_bit_mask_PGM))
+  45 0020 9040      		sbci r25,hi8(-(digital_pin_to_bit_mask_PGM))
+  46 0022 FC01      		movw r30,r24
+  47               	/* #APP */
+  48               	 ;  38 "../ebot_arduino/cores/wiring_pulse.c" 1
+  49 0024 8490      		lpm r8, Z
+  50               		
+  51               	 ;  0 "" 2
+  52               	.LVL2:
+  53               	/* #NOAPP */
+  54               	.LBE2:
+  55               	.LBB3:
+  56               	.LM3:
+  57 0026 A050      		subi r26,lo8(-(digital_pin_to_port_PGM))
+  58 0028 B040      		sbci r27,hi8(-(digital_pin_to_port_PGM))
+  59 002a FD01      		movw r30,r26
+  60               	/* #APP */
+  61               	 ;  39 "../ebot_arduino/cores/wiring_pulse.c" 1
+  62 002c 8491      		lpm r24, Z
+  63               		
+  64               	 ;  0 "" 2
+  65               	.LVL3:
+  66               	/* #NOAPP */
+  67               	.LBE3:
+  68               	.LM4:
+  69 002e 6623      		tst r22
+  70 0030 01F4      		brne .L2
+  71 0032 9924      		clr r9
+  72               	.LVL4:
+  73 0034 00C0      		rjmp .L3
+  74               	.LVL5:
+  75               	.L2:
+  76 0036 982C      		mov r9,r8
+  77               	.LVL6:
+  78               	.L3:
+  79               	.LM5:
+  80 0038 6FEF      		ldi r22,lo8(268435455)
+  81 003a A62E      		mov r10,r22
+  82 003c 6FEF      		ldi r22,hi8(268435455)
+  83 003e B62E      		mov r11,r22
+  84 0040 6FEF      		ldi r22,hlo8(268435455)
+  85 0042 C62E      		mov r12,r22
+  86 0044 6FE0      		ldi r22,hhi8(268435455)
+  87 0046 D62E      		mov r13,r22
+  88               	.LVL7:
+  89 0048 A222      		and r10,r18
+  90 004a B322      		and r11,r19
+  91 004c C422      		and r12,r20
+  92 004e D522      		and r13,r21
+  93               	.LBB4:
+  94               	.LM6:
+  95 0050 682F      		mov r22,r24
+  96               	.LVL8:
+  97 0052 70E0      		ldi r23,lo8(0)
+  98               	.LVL9:
+  99 0054 660F      		lsl r22
+ 100 0056 771F      		rol r23
+ 101               	.LVL10:
+ 102 0058 6050      		subi r22,lo8(-(port_to_input_PGM))
+ 103 005a 7040      		sbci r23,hi8(-(port_to_input_PGM))
+ 104 005c EE24      		clr r14
+ 105 005e FF24      		clr r15
+ 106 0060 8701      		movw r16,r14
+ 107               	.LVL11:
+ 108 0062 FB01      		movw r30,r22
+ 109               	/* #APP */
+ 110               	 ;  49 "../ebot_arduino/cores/wiring_pulse.c" 1
+ 111 0064 A591      		lpm r26, Z+
+ 112 0066 B491      		lpm r27, Z
+ 113               		
+ 114               	 ;  0 "" 2
+ 115               	.LVL12:
+ 116               	/* #NOAPP */
+ 117 0068 00C0      		rjmp .L4
+ 118               	.LVL13:
+ 119               	.L6:
+ 120               	.LBE4:
+ 121               	.LM7:
+ 122 006a EA14      		cp r14,r10
+ 123 006c FB04      		cpc r15,r11
+ 124 006e 0C05      		cpc r16,r12
+ 125 0070 1D05      		cpc r17,r13
+ 126 0072 01F4      		brne .+2
+ 127 0074 00C0      		rjmp .L5
+ 128 0076 0894      		sec
+ 129 0078 E11C      		adc r14,__zero_reg__
+ 130 007a F11C      		adc r15,__zero_reg__
+ 131 007c 011D      		adc r16,__zero_reg__
+ 132 007e 111D      		adc r17,__zero_reg__
+ 133               	.LVL14:
+ 134               	.L4:
+ 135               	.LM8:
+ 136 0080 8C91      		ld r24,X
+ 137               	.LVL15:
+ 138 0082 8821      		and r24,r8
+ 139 0084 8915      		cp r24,r9
+ 140 0086 01F0      		breq .L6
+ 141 0088 00C0      		rjmp .L15
+ 142               	.LVL16:
+ 143               	.L8:
+ 144               	.LM9:
+ 145 008a EA14      		cp r14,r10
+ 146 008c FB04      		cpc r15,r11
+ 147 008e 0C05      		cpc r16,r12
+ 148 0090 1D05      		cpc r17,r13
+ 149 0092 01F4      		brne .+2
+ 150 0094 00C0      		rjmp .L5
+ 151 0096 0894      		sec
+ 152 0098 E11C      		adc r14,__zero_reg__
+ 153 009a F11C      		adc r15,__zero_reg__
+ 154 009c 011D      		adc r16,__zero_reg__
+ 155 009e 111D      		adc r17,__zero_reg__
+ 156 00a0 00C0      		rjmp .L14
+ 157               	.LVL17:
+ 158               	.L15:
+ 159               	.LBB5:
+ 160               	.LM10:
+ 161 00a2 FB01      		movw r30,r22
+ 162               	.LVL18:
+ 163               	/* #APP */
+ 164               	 ;  54 "../ebot_arduino/cores/wiring_pulse.c" 1
+ 165 00a4 A591      		lpm r26, Z+
+ 166 00a6 B491      		lpm r27, Z
+ 167               		
+ 168               	 ;  0 "" 2
+ 169               	.LVL19:
+ 170               	/* #NOAPP */
+ 171               	.L14:
+ 172               	.LBE5:
+ 173 00a8 8C91      		ld r24,X
+ 174 00aa 8821      		and r24,r8
+ 175 00ac 8915      		cp r24,r9
+ 176 00ae 01F4      		brne .L8
+ 177 00b0 20E0      		ldi r18,lo8(0)
+ 178 00b2 30E0      		ldi r19,hi8(0)
+ 179 00b4 40E0      		ldi r20,hlo8(0)
+ 180 00b6 50E0      		ldi r21,hhi8(0)
+ 181               	.LVL20:
+ 182               	.LBB6:
+ 183               	.LM11:
+ 184 00b8 FB01      		movw r30,r22
+ 185               	.LVL21:
+ 186               	/* #APP */
+ 187               	 ;  59 "../ebot_arduino/cores/wiring_pulse.c" 1
+ 188 00ba C591      		lpm r28, Z+
+ 189 00bc D491      		lpm r29, Z
+ 190               		
+ 191               	 ;  0 "" 2
+ 192               	.LVL22:
+ 193               	/* #NOAPP */
+ 194 00be 00C0      		rjmp .L9
+ 195               	.L10:
+ 196               	.LBE6:
+ 197               	.LM12:
+ 198 00c0 DA01      		movw r26,r20
+ 199 00c2 C901      		movw r24,r18
+ 200 00c4 8E0D      		add r24,r14
+ 201 00c6 9F1D      		adc r25,r15
+ 202 00c8 A01F      		adc r26,r16
+ 203 00ca B11F      		adc r27,r17
+ 204 00cc 8A15      		cp r24,r10
+ 205 00ce 9B05      		cpc r25,r11
+ 206 00d0 AC05      		cpc r26,r12
+ 207 00d2 BD05      		cpc r27,r13
+ 208 00d4 01F0      		breq .L5
+ 209               	.LM13:
+ 210 00d6 2F5F      		subi r18,lo8(-(1))
+ 211 00d8 3F4F      		sbci r19,hi8(-(1))
+ 212 00da 4F4F      		sbci r20,hlo8(-(1))
+ 213 00dc 5F4F      		sbci r21,hhi8(-(1))
+ 214               	.L9:
+ 215               	.LM14:
+ 216 00de 8881      		ld r24,Y
+ 217 00e0 8821      		and r24,r8
+ 218 00e2 8915      		cp r24,r9
+ 219 00e4 01F0      		breq .L10
+ 220               	.LM15:
+ 221 00e6 CA01      		movw r24,r20
+ 222 00e8 B901      		movw r22,r18
+ 223               	.LVL23:
+ 224 00ea 25E1      		ldi r18,lo8(21)
+ 225 00ec 30E0      		ldi r19,hi8(21)
+ 226 00ee 40E0      		ldi r20,hlo8(21)
+ 227 00f0 50E0      		ldi r21,hhi8(21)
+ 228               	.LVL24:
+ 229 00f2 0E94 0000 		call __mulsi3
+ 230               	.LVL25:
+ 231 00f6 9B01      		movw r18,r22
+ 232 00f8 AC01      		movw r20,r24
+ 233 00fa 205F      		subi r18,lo8(-(16))
+ 234 00fc 3F4F      		sbci r19,hi8(-(16))
+ 235 00fe 4F4F      		sbci r20,hlo8(-(16))
+ 236 0100 5F4F      		sbci r21,hhi8(-(16))
+ 237 0102 84E0      		ldi r24,4
+ 238 0104 5695      	1:	lsr r21
+ 239 0106 4795      		ror r20
+ 240 0108 3795      		ror r19
+ 241 010a 2795      		ror r18
+ 242 010c 8A95      		dec r24
+ 243 010e 01F4      		brne 1b
+ 244 0110 00C0      		rjmp .L11
+ 245               	.LVL26:
+ 246               	.L5:
+ 247 0112 20E0      		ldi r18,lo8(0)
+ 248 0114 30E0      		ldi r19,hi8(0)
+ 249 0116 40E0      		ldi r20,hlo8(0)
+ 250 0118 50E0      		ldi r21,hhi8(0)
+ 251               	.LVL27:
+ 252               	.L11:
+ 253               	.LM16:
+ 254 011a B901      		movw r22,r18
+ 255               	.LVL28:
+ 256 011c CA01      		movw r24,r20
+ 257               	/* epilogue start */
+ 258 011e DF91      		pop r29
+ 259 0120 CF91      		pop r28
+ 260               	.LVL29:
+ 261 0122 1F91      		pop r17
+ 262 0124 0F91      		pop r16
+ 263 0126 FF90      		pop r15
+ 264 0128 EF90      		pop r14
+ 265               	.LVL30:
+ 266 012a DF90      		pop r13
+ 267 012c CF90      		pop r12
+ 268 012e BF90      		pop r11
+ 269 0130 AF90      		pop r10
+ 270               	.LVL31:
+ 271 0132 9F90      		pop r9
+ 272               	.LVL32:
+ 273 0134 8F90      		pop r8
+ 274               	.LVL33:
+ 275 0136 0895      		ret
+ 276               	.LFE5:
+ 278               	.global	pulseInLong
+ 280               	pulseInLong:
+ 281               	.LFB6:
+ 282               	.LM17:
+ 283               	.LVL34:
+ 284 0138 4F92      		push r4
+ 285 013a 5F92      		push r5
+ 286 013c 6F92      		push r6
+ 287 013e 7F92      		push r7
+ 288 0140 8F92      		push r8
+ 289 0142 9F92      		push r9
+ 290 0144 AF92      		push r10
+ 291 0146 BF92      		push r11
+ 292 0148 CF92      		push r12
+ 293 014a DF92      		push r13
+ 294 014c EF92      		push r14
+ 295 014e FF92      		push r15
+ 296 0150 0F93      		push r16
+ 297 0152 1F93      		push r17
+ 298 0154 CF93      		push r28
+ 299 0156 DF93      		push r29
+ 300               	/* prologue: function */
+ 301               	/* frame size = 0 */
+ 302 0158 5901      		movw r10,r18
+ 303 015a 6A01      		movw r12,r20
+ 304               	.LBB7:
+ 305               	.LM18:
+ 306 015c 282F      		mov r18,r24
+ 307               	.LVL35:
+ 308 015e 30E0      		ldi r19,lo8(0)
+ 309 0160 C901      		movw r24,r18
+ 310               	.LVL36:
+ 311 0162 8050      		subi r24,lo8(-(digital_pin_to_bit_mask_PGM))
+ 312 0164 9040      		sbci r25,hi8(-(digital_pin_to_bit_mask_PGM))
+ 313 0166 FC01      		movw r30,r24
+ 314               	/* #APP */
+ 315               	 ;  86 "../ebot_arduino/cores/wiring_pulse.c" 1
+ 316 0168 4490      		lpm r4, Z
+ 317               		
+ 318               	 ;  0 "" 2
+ 319               	.LVL37:
+ 320               	/* #NOAPP */
+ 321               	.LBE7:
+ 322               	.LBB8:
+ 323               	.LM19:
+ 324 016a 2050      		subi r18,lo8(-(digital_pin_to_port_PGM))
+ 325 016c 3040      		sbci r19,hi8(-(digital_pin_to_port_PGM))
+ 326 016e F901      		movw r30,r18
+ 327               	/* #APP */
+ 328               	 ;  87 "../ebot_arduino/cores/wiring_pulse.c" 1
+ 329 0170 9490      		lpm r9, Z
+ 330               		
+ 331               	 ;  0 "" 2
+ 332               	.LVL38:
+ 333               	/* #NOAPP */
+ 334               	.LBE8:
+ 335               	.LM20:
+ 336 0172 6623      		tst r22
+ 337 0174 01F4      		brne .L17
+ 338 0176 5524      		clr r5
+ 339               	.LVL39:
+ 340 0178 00C0      		rjmp .L18
+ 341               	.LVL40:
+ 342               	.L17:
+ 343 017a 542C      		mov r5,r4
+ 344               	.LVL41:
+ 345               	.L18:
+ 346               	.LM21:
+ 347 017c 0E94 0000 		call micros
+ 348               	.LVL42:
+ 349 0180 7B01      		movw r14,r22
+ 350 0182 8C01      		movw r16,r24
+ 351               	.LVL43:
+ 352               	.LBB9:
+ 353               	.LM22:
+ 354 0184 C92D      		mov r28,r9
+ 355               	.LVL44:
+ 356 0186 D0E0      		ldi r29,lo8(0)
+ 357               	.LVL45:
+ 358 0188 CC0F      		lsl r28
+ 359 018a DD1F      		rol r29
+ 360               	.LVL46:
+ 361 018c C050      		subi r28,lo8(-(port_to_input_PGM))
+ 362 018e D040      		sbci r29,hi8(-(port_to_input_PGM))
+ 363 0190 FE01      		movw r30,r28
+ 364               	/* #APP */
+ 365               	 ;  93 "../ebot_arduino/cores/wiring_pulse.c" 1
+ 366 0192 8590      		lpm r8, Z+
+ 367 0194 9490      		lpm r9, Z
+ 368               		
+ 369               	 ;  0 "" 2
+ 370               	.LVL47:
+ 371               	/* #NOAPP */
+ 372 0196 00C0      		rjmp .L19
+ 373               	.LVL48:
+ 374               	.L21:
+ 375               	.LBE9:
+ 376               	.LM23:
+ 377 0198 0E94 0000 		call micros
+ 378 019c 6E19      		sub r22,r14
+ 379 019e 7F09      		sbc r23,r15
+ 380 01a0 800B      		sbc r24,r16
+ 381 01a2 910B      		sbc r25,r17
+ 382 01a4 A616      		cp r10,r22
+ 383 01a6 B706      		cpc r11,r23
+ 384 01a8 C806      		cpc r12,r24
+ 385 01aa D906      		cpc r13,r25
+ 386 01ac 00F4      		brsh .+2
+ 387 01ae 00C0      		rjmp .L20
+ 388               	.LVL49:
+ 389               	.L19:
+ 390               	.LM24:
+ 391 01b0 F401      		movw r30,r8
+ 392               	.LVL50:
+ 393 01b2 8081      		ld r24,Z
+ 394 01b4 8421      		and r24,r4
+ 395 01b6 8515      		cp r24,r5
+ 396 01b8 01F0      		breq .L21
+ 397 01ba 00C0      		rjmp .L30
+ 398               	.LVL51:
+ 399               	.L23:
+ 400               	.LM25:
+ 401 01bc 0E94 0000 		call micros
+ 402 01c0 6E19      		sub r22,r14
+ 403 01c2 7F09      		sbc r23,r15
+ 404 01c4 800B      		sbc r24,r16
+ 405 01c6 910B      		sbc r25,r17
+ 406 01c8 A616      		cp r10,r22
+ 407 01ca B706      		cpc r11,r23
+ 408 01cc C806      		cpc r12,r24
+ 409 01ce D906      		cpc r13,r25
+ 410 01d0 00F4      		brsh .L29
+ 411 01d2 00C0      		rjmp .L20
+ 412               	.LVL52:
+ 413               	.L30:
+ 414               	.LBB10:
+ 415               	.LM26:
+ 416 01d4 FE01      		movw r30,r28
+ 417               	.LVL53:
+ 418               	/* #APP */
+ 419               	 ;  99 "../ebot_arduino/cores/wiring_pulse.c" 1
+ 420 01d6 8590      		lpm r8, Z+
+ 421 01d8 9490      		lpm r9, Z
+ 422               		
+ 423               	 ;  0 "" 2
+ 424               	.LVL54:
+ 425               	/* #NOAPP */
+ 426               	.L29:
+ 427               	.LBE10:
+ 428 01da F401      		movw r30,r8
+ 429               	.LVL55:
+ 430 01dc 8081      		ld r24,Z
+ 431 01de 8421      		and r24,r4
+ 432 01e0 8515      		cp r24,r5
+ 433 01e2 01F4      		brne .L23
+ 434               	.LM27:
+ 435 01e4 0E94 0000 		call micros
+ 436 01e8 3B01      		movw r6,r22
+ 437 01ea 4C01      		movw r8,r24
+ 438               	.LVL56:
+ 439               	.LBB11:
+ 440               	.LM28:
+ 441 01ec FE01      		movw r30,r28
+ 442               	.LVL57:
+ 443               	/* #APP */
+ 444               	 ;  106 "../ebot_arduino/cores/wiring_pulse.c" 1
+ 445 01ee C591      		lpm r28, Z+
+ 446 01f0 D491      		lpm r29, Z
+ 447               		
+ 448               	 ;  0 "" 2
+ 449               	.LVL58:
+ 450               	/* #NOAPP */
+ 451 01f2 00C0      		rjmp .L24
+ 452               	.L25:
+ 453               	.LBE11:
+ 454               	.LM29:
+ 455 01f4 0E94 0000 		call micros
+ 456               	.LVL59:
+ 457 01f8 6E19      		sub r22,r14
+ 458 01fa 7F09      		sbc r23,r15
+ 459 01fc 800B      		sbc r24,r16
+ 460 01fe 910B      		sbc r25,r17
+ 461 0200 A616      		cp r10,r22
+ 462 0202 B706      		cpc r11,r23
+ 463 0204 C806      		cpc r12,r24
+ 464 0206 D906      		cpc r13,r25
+ 465 0208 00F0      		brlo .L20
+ 466               	.LVL60:
+ 467               	.L24:
+ 468               	.LM30:
+ 469 020a 8881      		ld r24,Y
+ 470 020c 8421      		and r24,r4
+ 471 020e 8515      		cp r24,r5
+ 472 0210 01F0      		breq .L25
+ 473               	.LM31:
+ 474 0212 0E94 0000 		call micros
+ 475               	.LVL61:
+ 476 0216 9B01      		movw r18,r22
+ 477 0218 AC01      		movw r20,r24
+ 478 021a 2619      		sub r18,r6
+ 479 021c 3709      		sbc r19,r7
+ 480 021e 4809      		sbc r20,r8
+ 481 0220 5909      		sbc r21,r9
+ 482 0222 00C0      		rjmp .L26
+ 483               	.LVL62:
+ 484               	.L20:
+ 485 0224 20E0      		ldi r18,lo8(0)
+ 486 0226 30E0      		ldi r19,hi8(0)
+ 487 0228 40E0      		ldi r20,hlo8(0)
+ 488 022a 50E0      		ldi r21,hhi8(0)
+ 489               	.L26:
+ 490               	.LM32:
+ 491 022c B901      		movw r22,r18
+ 492 022e CA01      		movw r24,r20
+ 493               	/* epilogue start */
+ 494 0230 DF91      		pop r29
+ 495               	.LVL63:
+ 496 0232 CF91      		pop r28
+ 497               	.LVL64:
+ 498 0234 1F91      		pop r17
+ 499 0236 0F91      		pop r16
+ 500 0238 FF90      		pop r15
+ 501 023a EF90      		pop r14
+ 502               	.LVL65:
+ 503 023c DF90      		pop r13
+ 504 023e CF90      		pop r12
+ 505 0240 BF90      		pop r11
+ 506 0242 AF90      		pop r10
+ 507               	.LVL66:
+ 508 0244 9F90      		pop r9
+ 509               	.LVL67:
+ 510 0246 8F90      		pop r8
+ 511               	.LVL68:
+ 512 0248 7F90      		pop r7
+ 513 024a 6F90      		pop r6
+ 514               	.LVL69:
+ 515 024c 5F90      		pop r5
+ 516               	.LVL70:
+ 517 024e 4F90      		pop r4
+ 518               	.LVL71:
+ 519 0250 0895      		ret
+ 520               	.LFE6:
+ 554               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 wiring_pulse.c
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVvzjSA.s:2      *ABS*:0000003f __SREG__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVvzjSA.s:3      *ABS*:0000003e __SP_H__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVvzjSA.s:4      *ABS*:0000003d __SP_L__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVvzjSA.s:5      *ABS*:00000034 __CCP__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVvzjSA.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVvzjSA.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVvzjSA.s:20     .text:00000000 pulseIn
+C:\Users\OPENMA~1\AppData\Local\Temp/ccVvzjSA.s:280    .text:00000138 pulseInLong
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+digital_pin_to_bit_mask_PGM
+digital_pin_to_port_PGM
+port_to_input_PGM
+__mulsi3
+micros

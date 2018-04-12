@@ -1,0 +1,648 @@
+   1               		.file	"HardwareSerial.cpp"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	_ZN14HardwareSerial17_tx_udr_empty_irqEv
+  20               	_ZN14HardwareSerial17_tx_udr_empty_irqEv:
+  21               	.LFB120:
+  22               	.LM1:
+  23               	.LVL0:
+  24               	/* prologue: function */
+  25               	/* frame size = 0 */
+  26 0000 DC01      		movw r26,r24
+  27               	.LBB2:
+  28               	.LM2:
+  29 0002 5C96      		adiw r26,28
+  30 0004 8C91      		ld r24,X
+  31 0006 5C97      		sbiw r26,28
+  32               	.LVL1:
+  33 0008 FD01      		movw r30,r26
+  34 000a E80F      		add r30,r24
+  35 000c F11D      		adc r31,__zero_reg__
+  36 000e E35A      		subi r30,lo8(-(93))
+  37 0010 FF4F      		sbci r31,hi8(-(93))
+  38 0012 2081      		ld r18,Z
+  39               	.LVL2:
+  40               	.LM3:
+  41 0014 5C96      		adiw r26,28
+  42 0016 8C91      		ld r24,X
+  43 0018 5C97      		sbiw r26,28
+  44 001a 90E0      		ldi r25,lo8(0)
+  45 001c 0196      		adiw r24,1
+  46 001e 8F73      		andi r24,lo8(63)
+  47 0020 9070      		andi r25,hi8(63)
+  48 0022 5C96      		adiw r26,28
+  49 0024 8C93      		st X,r24
+  50 0026 5C97      		sbiw r26,28
+  51               	.LM4:
+  52 0028 5696      		adiw r26,22
+  53 002a ED91      		ld r30,X+
+  54 002c FC91      		ld r31,X
+  55 002e 5797      		sbiw r26,22+1
+  56 0030 2083      		st Z,r18
+  57               	.LM5:
+  58 0032 5096      		adiw r26,16
+  59 0034 ED91      		ld r30,X+
+  60 0036 FC91      		ld r31,X
+  61 0038 5197      		sbiw r26,16+1
+  62 003a 8081      		ld r24,Z
+  63 003c 8064      		ori r24,lo8(64)
+  64 003e 8083      		st Z,r24
+  65               	.LM6:
+  66 0040 5B96      		adiw r26,27
+  67 0042 9C91      		ld r25,X
+  68 0044 5B97      		sbiw r26,27
+  69 0046 5C96      		adiw r26,28
+  70 0048 8C91      		ld r24,X
+  71 004a 5C97      		sbiw r26,28
+  72 004c 9817      		cp r25,r24
+  73 004e 01F4      		brne .L3
+  74               	.LM7:
+  75 0050 5296      		adiw r26,18
+  76 0052 ED91      		ld r30,X+
+  77 0054 FC91      		ld r31,X
+  78 0056 5397      		sbiw r26,18+1
+  79 0058 8081      		ld r24,Z
+  80 005a 8F7D      		andi r24,lo8(-33)
+  81 005c 8083      		st Z,r24
+  82               	.L3:
+  83 005e 0895      		ret
+  84               	.LBE2:
+  85               	.LFE120:
+  87               	.global	_ZN14HardwareSerial5beginEmh
+  89               	_ZN14HardwareSerial5beginEmh:
+  90               	.LFB121:
+  91               	.LM8:
+  92               	.LVL3:
+  93 0060 DF92      		push r13
+  94 0062 EF92      		push r14
+  95 0064 FF92      		push r15
+  96 0066 0F93      		push r16
+  97 0068 1F93      		push r17
+  98 006a CF93      		push r28
+  99 006c DF93      		push r29
+ 100               	/* prologue: function */
+ 101               	/* frame size = 0 */
+ 102 006e EC01      		movw r28,r24
+ 103 0070 7A01      		movw r14,r20
+ 104 0072 8B01      		movw r16,r22
+ 105 0074 D22E      		mov r13,r18
+ 106               	.LBB3:
+ 107               	.LM9:
+ 108 0076 E889      		ldd r30,Y+16
+ 109 0078 F989      		ldd r31,Y+17
+ 110 007a 82E0      		ldi r24,lo8(2)
+ 111               	.LVL4:
+ 112 007c 8083      		st Z,r24
+ 113               	.LM10:
+ 114 007e 4030      		cpi r20,lo8(57600)
+ 115 0080 81EE      		ldi r24,hi8(57600)
+ 116 0082 5807      		cpc r21,r24
+ 117 0084 80E0      		ldi r24,hlo8(57600)
+ 118 0086 6807      		cpc r22,r24
+ 119 0088 80E0      		ldi r24,hhi8(57600)
+ 120 008a 7807      		cpc r23,r24
+ 121 008c 01F0      		breq .L5
+ 122               	.LVL5:
+ 123               	.LM11:
+ 124 008e 60E0      		ldi r22,lo8(4000000)
+ 125 0090 79E0      		ldi r23,hi8(4000000)
+ 126 0092 8DE3      		ldi r24,hlo8(4000000)
+ 127 0094 90E0      		ldi r25,hhi8(4000000)
+ 128 0096 A801      		movw r20,r16
+ 129 0098 9701      		movw r18,r14
+ 130 009a 0E94 0000 		call __udivmodsi4
+ 131 009e 2150      		subi r18,lo8(-(-1))
+ 132 00a0 3040      		sbci r19,hi8(-(-1))
+ 133 00a2 4040      		sbci r20,hlo8(-(-1))
+ 134 00a4 5040      		sbci r21,hhi8(-(-1))
+ 135 00a6 5695      		lsr r21
+ 136 00a8 4795      		ror r20
+ 137 00aa 3795      		ror r19
+ 138 00ac 2795      		ror r18
+ 139               	.LM12:
+ 140 00ae 80E1      		ldi r24,hi8(4096)
+ 141 00b0 2030      		cpi r18,lo8(4096)
+ 142 00b2 3807      		cpc r19,r24
+ 143               	.LVL6:
+ 144 00b4 00F0      		brlo .L6
+ 145               	.LVL7:
+ 146               	.L5:
+ 147               	.LM13:
+ 148 00b6 E889      		ldd r30,Y+16
+ 149 00b8 F989      		ldd r31,Y+17
+ 150 00ba 1082      		st Z,__zero_reg__
+ 151               	.LM14:
+ 152 00bc 60E8      		ldi r22,lo8(2000000)
+ 153 00be 74E8      		ldi r23,hi8(2000000)
+ 154 00c0 8EE1      		ldi r24,hlo8(2000000)
+ 155 00c2 90E0      		ldi r25,hhi8(2000000)
+ 156 00c4 A801      		movw r20,r16
+ 157 00c6 9701      		movw r18,r14
+ 158               	.LVL8:
+ 159 00c8 0E94 0000 		call __udivmodsi4
+ 160 00cc 2150      		subi r18,lo8(-(-1))
+ 161 00ce 3040      		sbci r19,hi8(-(-1))
+ 162 00d0 4040      		sbci r20,hlo8(-(-1))
+ 163 00d2 5040      		sbci r21,hhi8(-(-1))
+ 164 00d4 5695      		lsr r21
+ 165 00d6 4795      		ror r20
+ 166 00d8 3795      		ror r19
+ 167 00da 2795      		ror r18
+ 168               	.LVL9:
+ 169               	.L6:
+ 170               	.LM15:
+ 171 00dc EC85      		ldd r30,Y+12
+ 172 00de FD85      		ldd r31,Y+13
+ 173 00e0 3083      		st Z,r19
+ 174               	.LVL10:
+ 175               	.LM16:
+ 176 00e2 EE85      		ldd r30,Y+14
+ 177 00e4 FF85      		ldd r31,Y+15
+ 178 00e6 2083      		st Z,r18
+ 179               	.LM17:
+ 180 00e8 188E      		std Y+24,__zero_reg__
+ 181               	.LM18:
+ 182 00ea EC89      		ldd r30,Y+20
+ 183 00ec FD89      		ldd r31,Y+21
+ 184 00ee D082      		st Z,r13
+ 185               	.LM19:
+ 186 00f0 EA89      		ldd r30,Y+18
+ 187 00f2 FB89      		ldd r31,Y+19
+ 188 00f4 8081      		ld r24,Z
+ 189 00f6 8061      		ori r24,lo8(16)
+ 190 00f8 8083      		st Z,r24
+ 191               	.LM20:
+ 192 00fa EA89      		ldd r30,Y+18
+ 193 00fc FB89      		ldd r31,Y+19
+ 194 00fe 8081      		ld r24,Z
+ 195 0100 8860      		ori r24,lo8(8)
+ 196 0102 8083      		st Z,r24
+ 197               	.LM21:
+ 198 0104 EA89      		ldd r30,Y+18
+ 199 0106 FB89      		ldd r31,Y+19
+ 200 0108 8081      		ld r24,Z
+ 201 010a 8068      		ori r24,lo8(-128)
+ 202 010c 8083      		st Z,r24
+ 203               	.LM22:
+ 204 010e EA89      		ldd r30,Y+18
+ 205 0110 FB89      		ldd r31,Y+19
+ 206 0112 8081      		ld r24,Z
+ 207 0114 8F7D      		andi r24,lo8(-33)
+ 208 0116 8083      		st Z,r24
+ 209               	/* epilogue start */
+ 210               	.LBE3:
+ 211               	.LM23:
+ 212 0118 DF91      		pop r29
+ 213 011a CF91      		pop r28
+ 214               	.LVL11:
+ 215 011c 1F91      		pop r17
+ 216 011e 0F91      		pop r16
+ 217 0120 FF90      		pop r15
+ 218 0122 EF90      		pop r14
+ 219               	.LVL12:
+ 220 0124 DF90      		pop r13
+ 221               	.LVL13:
+ 222 0126 0895      		ret
+ 223               	.LFE121:
+ 225               	.global	_ZN14HardwareSerial3endEv
+ 227               	_ZN14HardwareSerial3endEv:
+ 228               	.LFB122:
+ 229               	.LM24:
+ 230               	.LVL14:
+ 231 0128 0F93      		push r16
+ 232 012a 1F93      		push r17
+ 233               	/* prologue: function */
+ 234               	/* frame size = 0 */
+ 235 012c 8C01      		movw r16,r24
+ 236               	.LM25:
+ 237 012e DC01      		movw r26,r24
+ 238 0130 ED91      		ld r30,X+
+ 239 0132 FC91      		ld r31,X
+ 240 0134 0284      		ldd __tmp_reg__,Z+10
+ 241 0136 F385      		ldd r31,Z+11
+ 242 0138 E02D      		mov r30,__tmp_reg__
+ 243 013a 0995      		icall
+ 244               	.LVL15:
+ 245               	.LM26:
+ 246 013c D801      		movw r26,r16
+ 247 013e 5296      		adiw r26,18
+ 248 0140 ED91      		ld r30,X+
+ 249 0142 FC91      		ld r31,X
+ 250 0144 5397      		sbiw r26,18+1
+ 251 0146 8081      		ld r24,Z
+ 252 0148 8F7E      		andi r24,lo8(-17)
+ 253 014a 8083      		st Z,r24
+ 254               	.LM27:
+ 255 014c 5296      		adiw r26,18
+ 256 014e ED91      		ld r30,X+
+ 257 0150 FC91      		ld r31,X
+ 258 0152 5397      		sbiw r26,18+1
+ 259 0154 8081      		ld r24,Z
+ 260 0156 877F      		andi r24,lo8(-9)
+ 261 0158 8083      		st Z,r24
+ 262               	.LM28:
+ 263 015a 5296      		adiw r26,18
+ 264 015c ED91      		ld r30,X+
+ 265 015e FC91      		ld r31,X
+ 266 0160 5397      		sbiw r26,18+1
+ 267 0162 8081      		ld r24,Z
+ 268 0164 8F77      		andi r24,lo8(127)
+ 269 0166 8083      		st Z,r24
+ 270               	.LM29:
+ 271 0168 5296      		adiw r26,18
+ 272 016a ED91      		ld r30,X+
+ 273 016c FC91      		ld r31,X
+ 274 016e 5397      		sbiw r26,18+1
+ 275 0170 8081      		ld r24,Z
+ 276 0172 8F7D      		andi r24,lo8(-33)
+ 277 0174 8083      		st Z,r24
+ 278               	.LM30:
+ 279 0176 5A96      		adiw r26,26
+ 280 0178 8C91      		ld r24,X
+ 281 017a 5A97      		sbiw r26,26
+ 282 017c 5996      		adiw r26,25
+ 283 017e 8C93      		st X,r24
+ 284               	/* epilogue start */
+ 285               	.LM31:
+ 286 0180 1F91      		pop r17
+ 287 0182 0F91      		pop r16
+ 288               	.LVL16:
+ 289 0184 0895      		ret
+ 290               	.LFE122:
+ 292               	.global	_ZN14HardwareSerial9availableEv
+ 294               	_ZN14HardwareSerial9availableEv:
+ 295               	.LFB123:
+ 296               	.LM32:
+ 297               	.LVL17:
+ 298               	/* prologue: function */
+ 299               	/* frame size = 0 */
+ 300 0186 FC01      		movw r30,r24
+ 301               	.LM33:
+ 302 0188 218D      		ldd r18,Z+25
+ 303 018a 828D      		ldd r24,Z+26
+ 304               	.LVL18:
+ 305 018c 30E0      		ldi r19,lo8(0)
+ 306 018e 205C      		subi r18,lo8(-(64))
+ 307 0190 3F4F      		sbci r19,hi8(-(64))
+ 308 0192 281B      		sub r18,r24
+ 309 0194 3109      		sbc r19,__zero_reg__
+ 310 0196 2F73      		andi r18,lo8(63)
+ 311 0198 3070      		andi r19,hi8(63)
+ 312               	.LM34:
+ 313 019a C901      		movw r24,r18
+ 314               	/* epilogue start */
+ 315 019c 0895      		ret
+ 316               	.LFE123:
+ 318               	.global	_ZN14HardwareSerial4peekEv
+ 320               	_ZN14HardwareSerial4peekEv:
+ 321               	.LFB124:
+ 322               	.LM35:
+ 323               	.LVL19:
+ 324               	/* prologue: function */
+ 325               	/* frame size = 0 */
+ 326 019e FC01      		movw r30,r24
+ 327               	.LM36:
+ 328 01a0 918D      		ldd r25,Z+25
+ 329 01a2 828D      		ldd r24,Z+26
+ 330               	.LVL20:
+ 331 01a4 9817      		cp r25,r24
+ 332 01a6 01F4      		brne .L13
+ 333 01a8 2FEF      		ldi r18,lo8(-1)
+ 334 01aa 3FEF      		ldi r19,hi8(-1)
+ 335 01ac 00C0      		rjmp .L14
+ 336               	.L13:
+ 337               	.LM37:
+ 338 01ae 828D      		ldd r24,Z+26
+ 339 01b0 E80F      		add r30,r24
+ 340 01b2 F11D      		adc r31,__zero_reg__
+ 341 01b4 858D      		ldd r24,Z+29
+ 342 01b6 282F      		mov r18,r24
+ 343 01b8 30E0      		ldi r19,lo8(0)
+ 344               	.L14:
+ 345               	.LM38:
+ 346 01ba C901      		movw r24,r18
+ 347               	/* epilogue start */
+ 348 01bc 0895      		ret
+ 349               	.LFE124:
+ 351               	.global	_ZN14HardwareSerial4readEv
+ 353               	_ZN14HardwareSerial4readEv:
+ 354               	.LFB125:
+ 355               	.LM39:
+ 356               	.LVL21:
+ 357               	/* prologue: function */
+ 358               	/* frame size = 0 */
+ 359 01be DC01      		movw r26,r24
+ 360               	.LBB4:
+ 361               	.LM40:
+ 362 01c0 5996      		adiw r26,25
+ 363 01c2 9C91      		ld r25,X
+ 364 01c4 5997      		sbiw r26,25
+ 365 01c6 5A96      		adiw r26,26
+ 366 01c8 8C91      		ld r24,X
+ 367 01ca 5A97      		sbiw r26,26
+ 368               	.LVL22:
+ 369 01cc 9817      		cp r25,r24
+ 370 01ce 01F4      		brne .L17
+ 371 01d0 2FEF      		ldi r18,lo8(-1)
+ 372 01d2 3FEF      		ldi r19,hi8(-1)
+ 373 01d4 00C0      		rjmp .L18
+ 374               	.L17:
+ 375               	.LBB5:
+ 376               	.LM41:
+ 377 01d6 5A96      		adiw r26,26
+ 378 01d8 8C91      		ld r24,X
+ 379 01da 5A97      		sbiw r26,26
+ 380 01dc FD01      		movw r30,r26
+ 381 01de E80F      		add r30,r24
+ 382 01e0 F11D      		adc r31,__zero_reg__
+ 383 01e2 958D      		ldd r25,Z+29
+ 384               	.LVL23:
+ 385               	.LM42:
+ 386 01e4 5A96      		adiw r26,26
+ 387 01e6 8C91      		ld r24,X
+ 388 01e8 5A97      		sbiw r26,26
+ 389 01ea 8F5F      		subi r24,lo8(-(1))
+ 390 01ec 8F73      		andi r24,lo8(63)
+ 391 01ee 5A96      		adiw r26,26
+ 392 01f0 8C93      		st X,r24
+ 393               	.LM43:
+ 394 01f2 292F      		mov r18,r25
+ 395 01f4 30E0      		ldi r19,lo8(0)
+ 396               	.L18:
+ 397               	.LBE5:
+ 398               	.LBE4:
+ 399               	.LM44:
+ 400 01f6 C901      		movw r24,r18
+ 401               	/* epilogue start */
+ 402 01f8 0895      		ret
+ 403               	.LFE125:
+ 405               	.global	_ZN14HardwareSerial17availableForWriteEv
+ 407               	_ZN14HardwareSerial17availableForWriteEv:
+ 408               	.LFB126:
+ 409               	.LM45:
+ 410               	.LVL24:
+ 411               	/* prologue: function */
+ 412               	/* frame size = 0 */
+ 413 01fa FC01      		movw r30,r24
+ 414               	.LBB6:
+ 415               	.LM46:
+ 416 01fc 938D      		ldd r25,Z+27
+ 417               	.LVL25:
+ 418               	.LM47:
+ 419 01fe 848D      		ldd r24,Z+28
+ 420               	.LVL26:
+ 421 0200 282F      		mov r18,r24
+ 422 0202 30E0      		ldi r19,lo8(0)
+ 423               	.LVL27:
+ 424 0204 492F      		mov r20,r25
+ 425 0206 50E0      		ldi r21,lo8(0)
+ 426               	.LVL28:
+ 427               	.LM48:
+ 428 0208 9817      		cp r25,r24
+ 429 020a 00F0      		brlo .L21
+ 430 020c 215C      		subi r18,lo8(-(63))
+ 431 020e 3F4F      		sbci r19,hi8(-(63))
+ 432 0210 00C0      		rjmp .L24
+ 433               	.LVL29:
+ 434               	.L21:
+ 435               	.LM49:
+ 436 0212 2150      		subi r18,lo8(-(-1))
+ 437 0214 3040      		sbci r19,hi8(-(-1))
+ 438               	.L24:
+ 439 0216 241B      		sub r18,r20
+ 440 0218 350B      		sbc r19,r21
+ 441               	.LBE6:
+ 442               	.LM50:
+ 443 021a C901      		movw r24,r18
+ 444               	.LVL30:
+ 445               	/* epilogue start */
+ 446 021c 0895      		ret
+ 447               	.LFE126:
+ 449               	.global	_ZN14HardwareSerial5flushEv
+ 451               	_ZN14HardwareSerial5flushEv:
+ 452               	.LFB127:
+ 453               	.LM51:
+ 454               	.LVL31:
+ 455 021e CF93      		push r28
+ 456 0220 DF93      		push r29
+ 457               	/* prologue: function */
+ 458               	/* frame size = 0 */
+ 459 0222 EC01      		movw r28,r24
+ 460               	.LM52:
+ 461 0224 888D      		ldd r24,Y+24
+ 462               	.LVL32:
+ 463 0226 8823      		tst r24
+ 464 0228 01F4      		brne .L35
+ 465 022a 00C0      		rjmp .L31
+ 466               	.L36:
+ 467               	.LM53:
+ 468 022c 8C91      		ld r24,X
+ 469 022e 85FF      		sbrs r24,5
+ 470 0230 00C0      		rjmp .L34
+ 471               	.LM54:
+ 472 0232 E889      		ldd r30,Y+16
+ 473 0234 F989      		ldd r31,Y+17
+ 474 0236 8081      		ld r24,Z
+ 475 0238 85FF      		sbrs r24,5
+ 476 023a 00C0      		rjmp .L34
+ 477               	.LM55:
+ 478 023c CE01      		movw r24,r28
+ 479 023e 0E94 0000 		call _ZN14HardwareSerial17_tx_udr_empty_irqEv
+ 480               	.L35:
+ 481               	.LM56:
+ 482 0242 AA89      		ldd r26,Y+18
+ 483 0244 BB89      		ldd r27,Y+19
+ 484               	.L34:
+ 485 0246 8C91      		ld r24,X
+ 486 0248 85FD      		sbrc r24,5
+ 487 024a 00C0      		rjmp .L29
+ 488 024c E889      		ldd r30,Y+16
+ 489 024e F989      		ldd r31,Y+17
+ 490 0250 8081      		ld r24,Z
+ 491 0252 86FD      		sbrc r24,6
+ 492 0254 00C0      		rjmp .L31
+ 493               	.L29:
+ 494               	.LM57:
+ 495 0256 0FB6      		in __tmp_reg__,95-32
+ 496 0258 07FE      		sbrs __tmp_reg__,7
+ 497 025a 00C0      		rjmp .L36
+ 498 025c 00C0      		rjmp .L34
+ 499               	.L31:
+ 500               	/* epilogue start */
+ 501               	.LM58:
+ 502 025e DF91      		pop r29
+ 503 0260 CF91      		pop r28
+ 504               	.LVL33:
+ 505 0262 0895      		ret
+ 506               	.LFE127:
+ 508               	.global	_ZN14HardwareSerial5writeEh
+ 510               	_ZN14HardwareSerial5writeEh:
+ 511               	.LFB128:
+ 512               	.LM59:
+ 513               	.LVL34:
+ 514 0264 0F93      		push r16
+ 515 0266 1F93      		push r17
+ 516 0268 CF93      		push r28
+ 517 026a DF93      		push r29
+ 518               	/* prologue: function */
+ 519               	/* frame size = 0 */
+ 520 026c EC01      		movw r28,r24
+ 521 026e 062F      		mov r16,r22
+ 522               	.LBB7:
+ 523               	.LM60:
+ 524 0270 81E0      		ldi r24,lo8(1)
+ 525               	.LVL35:
+ 526 0272 888F      		std Y+24,r24
+ 527               	.LM61:
+ 528 0274 9B8D      		ldd r25,Y+27
+ 529 0276 8C8D      		ldd r24,Y+28
+ 530 0278 9817      		cp r25,r24
+ 531 027a 01F4      		brne .L38
+ 532               	.LVL36:
+ 533 027c E889      		ldd r30,Y+16
+ 534 027e F989      		ldd r31,Y+17
+ 535 0280 8081      		ld r24,Z
+ 536 0282 85FF      		sbrs r24,5
+ 537 0284 00C0      		rjmp .L38
+ 538               	.LM62:
+ 539 0286 EE89      		ldd r30,Y+22
+ 540 0288 FF89      		ldd r31,Y+23
+ 541 028a 6083      		st Z,r22
+ 542               	.LM63:
+ 543 028c E889      		ldd r30,Y+16
+ 544 028e F989      		ldd r31,Y+17
+ 545 0290 8081      		ld r24,Z
+ 546 0292 8064      		ori r24,lo8(64)
+ 547 0294 00C0      		rjmp .L46
+ 548               	.LVL37:
+ 549               	.L41:
+ 550               	.LM64:
+ 551 0296 0FB6      		in __tmp_reg__,95-32
+ 552 0298 07FC      		sbrc __tmp_reg__,7
+ 553 029a 00C0      		rjmp .L45
+ 554               	.LM65:
+ 555 029c E889      		ldd r30,Y+16
+ 556 029e F989      		ldd r31,Y+17
+ 557 02a0 8081      		ld r24,Z
+ 558 02a2 85FF      		sbrs r24,5
+ 559 02a4 00C0      		rjmp .L45
+ 560               	.LM66:
+ 561 02a6 CE01      		movw r24,r28
+ 562 02a8 0E94 0000 		call _ZN14HardwareSerial17_tx_udr_empty_irqEv
+ 563               	.LVL38:
+ 564               	.L45:
+ 565               	.LM67:
+ 566 02ac 8C8D      		ldd r24,Y+28
+ 567 02ae 1817      		cp r17,r24
+ 568 02b0 01F0      		breq .L41
+ 569               	.LM68:
+ 570 02b2 8B8D      		ldd r24,Y+27
+ 571 02b4 FE01      		movw r30,r28
+ 572 02b6 E80F      		add r30,r24
+ 573 02b8 F11D      		adc r31,__zero_reg__
+ 574 02ba E35A      		subi r30,lo8(-(93))
+ 575 02bc FF4F      		sbci r31,hi8(-(93))
+ 576 02be 0083      		st Z,r16
+ 577               	.LM69:
+ 578 02c0 1B8F      		std Y+27,r17
+ 579               	.LM70:
+ 580 02c2 EA89      		ldd r30,Y+18
+ 581 02c4 FB89      		ldd r31,Y+19
+ 582 02c6 8081      		ld r24,Z
+ 583 02c8 8062      		ori r24,lo8(32)
+ 584               	.L46:
+ 585 02ca 8083      		st Z,r24
+ 586               	.LBE7:
+ 587               	.LM71:
+ 588 02cc 81E0      		ldi r24,lo8(1)
+ 589 02ce 90E0      		ldi r25,hi8(1)
+ 590               	/* epilogue start */
+ 591 02d0 DF91      		pop r29
+ 592 02d2 CF91      		pop r28
+ 593               	.LVL39:
+ 594 02d4 1F91      		pop r17
+ 595               	.LVL40:
+ 596 02d6 0F91      		pop r16
+ 597               	.LVL41:
+ 598 02d8 0895      		ret
+ 599               	.LVL42:
+ 600               	.L38:
+ 601               	.LBB8:
+ 602               	.LM72:
+ 603 02da 1B8D      		ldd r17,Y+27
+ 604               	.LVL43:
+ 605 02dc 1F5F      		subi r17,lo8(-(1))
+ 606 02de 1F73      		andi r17,lo8(63)
+ 607 02e0 00C0      		rjmp .L45
+ 608               	.LBE8:
+ 609               	.LFE128:
+ 611               		.weak	_Z14serialEventRunv
+ 613               	_Z14serialEventRunv:
+ 614               	.LFB119:
+ 615               	.LM73:
+ 616               	/* prologue: function */
+ 617               	/* frame size = 0 */
+ 618               	.LM74:
+ 619 02e2 80E0      		ldi r24,lo8(gs(_Z17Serial0_availablev))
+ 620 02e4 90E0      		ldi r25,hi8(gs(_Z17Serial0_availablev))
+ 621 02e6 892B      		or r24,r25
+ 622 02e8 01F0      		breq .L49
+ 623 02ea 80E0      		ldi r24,lo8(gs(_Z11serialEventv))
+ 624 02ec 90E0      		ldi r25,hi8(gs(_Z11serialEventv))
+ 625 02ee 892B      		or r24,r25
+ 626 02f0 01F0      		breq .L49
+ 627 02f2 0E94 0000 		call _Z17Serial0_availablev
+ 628 02f6 8823      		tst r24
+ 629 02f8 01F0      		breq .L49
+ 630 02fa 0E94 0000 		call _Z11serialEventv
+ 631               	.L49:
+ 632 02fe 0895      		ret
+ 633               	.LFE119:
+ 635               		.weak	_ZTV14HardwareSerial
+ 636               		.data
+ 639               	_ZTV14HardwareSerial:
+ 640 0000 0000      		.word	0
+ 641 0002 0000      		.word	0
+ 642 0004 0000      		.word	gs(_ZN14HardwareSerial5writeEh)
+ 643 0006 0000      		.word	gs(_ZN5Print5writeEPKhj)
+ 644 0008 0000      		.word	gs(_ZN14HardwareSerial9availableEv)
+ 645 000a 0000      		.word	gs(_ZN14HardwareSerial4readEv)
+ 646 000c 0000      		.word	gs(_ZN14HardwareSerial4peekEv)
+ 647 000e 0000      		.word	gs(_ZN14HardwareSerial5flushEv)
+ 648               		.weak	_Z17Serial0_availablev
+ 649               		.weak	_Z11serialEventv
+ 746               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 HardwareSerial.cpp
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:2      *ABS*:0000003f __SREG__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:3      *ABS*:0000003e __SP_H__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:4      *ABS*:0000003d __SP_L__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:5      *ABS*:00000034 __CCP__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:20     .text:00000000 _ZN14HardwareSerial17_tx_udr_empty_irqEv
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:89     .text:00000060 _ZN14HardwareSerial5beginEmh
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:227    .text:00000128 _ZN14HardwareSerial3endEv
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:294    .text:00000186 _ZN14HardwareSerial9availableEv
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:320    .text:0000019e _ZN14HardwareSerial4peekEv
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:353    .text:000001be _ZN14HardwareSerial4readEv
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:407    .text:000001fa _ZN14HardwareSerial17availableForWriteEv
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:451    .text:0000021e _ZN14HardwareSerial5flushEv
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:510    .text:00000264 _ZN14HardwareSerial5writeEh
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:613    .text:000002e2 _Z14serialEventRunv
+C:\Users\OPENMA~1\AppData\Local\Temp/ccgZr9Ue.s:639    .data:00000000 _ZTV14HardwareSerial
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__udivmodsi4
+_Z17Serial0_availablev
+_Z11serialEventv
+_ZN5Print5writeEPKhj
